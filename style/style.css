@@ -353,17 +353,17 @@ html::-webkit-scrollbar-track {
 
 .progress.html span {
   width: 95%;
-  background: #ff4c60;
+  background: var(--text-color);
 }
 
 .progress.css span {
   width: 85%;
-  background: #6c6ce5;
+  background: var(--text-color);
 }
 
 .progress.js span {
   width: 70%;
-  background: #ffd15c;
+  background: var(--text-color);
 }
 
 .facts {
