@@ -4,57 +4,339 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ahmad Salloum - Professional Web Developer specializing in modern web solutions and applications"
+    />
+    <meta
+      name="keywords"
+      content="web developer, frontend developer, react, javascript, php, mysql"
+    />
 
     <link rel="shortcut icon" type="image/x-icon" href="images/" />
 
     <!-- STYLESHEETS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="style/all.min.css" />
     <link rel="stylesheet" href="style/simple-line-icons.css" />
     <link rel="stylesheet" href="style/style.css" />
-    <title>Ahmad Salloum</title>
+    <title>Ahmad Salloum | Professional Web Developer</title>
     <style>
+      :root {
+        --main-color: #212428;
+        --orange-color: #fd4520;
+        --primary-color: #ffda75;
+        --white-color: #ffffff;
+        --font-color: #c4cfde;
+        --text-color: #929292;
+        --background-color-1: linear-gradient(145deg, #1e2024, #23272b);
+        --shadow-1: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+        --shadow-2: inset 21px 21px 19px #181a1d, inset -21px -21px 19px #202225;
+        --input-shadow: 1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset,
+          -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset;
+      }
+
+      .light-theme {
+        --main-color: #f0f0f0;
+        --orange-color: #fd4520;
+        --primary-color: #3498db;
+        --white-color: #ffffff;
+        --font-color: #2c3e50;
+        --text-color: #7f8c8d;
+        --background-color-1: linear-gradient(145deg, #ffffff, #f0f0f0);
+        --shadow-1: 10px 10px 19px #d9d9d9, -10px -10px 19px #ffffff;
+        --shadow-2: inset 21px 21px 19px #e6e6e6, inset -21px -21px 19px #ffffff;
+        --input-shadow: 1px 4px 2px -3px rgba(0, 0, 0, 0.1) inset,
+          -1px -3px 3px -2px rgba(255, 255, 255, 0.8) inset;
+      }
+
+      /* Theme Toggle Button */
+      .theme-toggle {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--background-color-1);
+        box-shadow: var(--shadow-1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        border: none;
+        color: var(--font-color);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: rotate(30deg);
+        color: var(--primary-color);
+      }
+
       .live-demo-btn {
         background: #3498db;
         color: white;
-        padding: 5px 15px;
+        padding: 8px 20px;
         border-radius: 20px;
         text-decoration: none;
         font-size: 14px;
+        font-weight: 600;
         transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
 
       .live-demo-btn:hover {
         background: #2980b9;
         transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
       }
+
       .view-more-projects {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 50px;
         width: 100%;
       }
 
       .view-more-btn {
-        background: #212428;
-        color: white;
-        padding: 12px 30px;
-        border-radius: 25px;
+        background: var(--main-color);
+        color: var(--white-color);
+        padding: 15px 40px;
+        border-radius: 30px;
         text-decoration: none;
         font-weight: bold;
         font-size: 16px;
         transition: all 0.3s ease;
-        display: inline-block;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: var(--shadow-1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .view-more-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .view-more-btn:hover::before {
+        left: 100%;
       }
 
       .view-more-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        background: var(--primary-color);
+        color: var(--main-color);
+      }
+
+      /* Enhanced Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      /* Enhanced Skills Animation */
+      .progress span {
+        transition: width 1.5s ease-in-out !important;
+      }
+
+      /* Enhanced Service Cards */
+      .service-box {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid transparent;
+      }
+
+      .service-box:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-color);
+      }
+
+      /* Professional Badges */
+      .certification-badge {
+        display: inline-block;
+        background: var(--primary-color);
+        color: var(--main-color);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+
+      /* Enhanced Project Cards */
+      .blog-box {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .blog-box:hover {
+        transform: translateY(-5px);
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+      }
+
+      .tech-tag {
+        background: rgba(255, 218, 117, 0.1);
+        color: var(--primary-color);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 1px solid rgba(255, 218, 117, 0.2);
+      }
+
+      /* Enhanced Contact Form */
+      .contact-form .input-group input,
+      .contact-form .input-group textarea {
+        transition: all 0.3s ease;
+      }
+
+      .contact-form .input-group input:focus,
+      .contact-form .input-group textarea:focus {
+        border-color: var(--primary-color) !important;
+        transform: translateY(-2px);
+      }
+
+      /* Professional Footer */
+      footer {
+        background: var(--main-color);
+        color: var(--font-color);
+        padding: 50px 0 20px;
+        text-align: center;
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--primary-color);
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 15px;
+      }
+
+      .footer-social a {
+        width: 40px;
+        height: 40px;
+        background: var(--background-color-1);
+        box-shadow: var(--shadow-1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--font-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-social a:hover {
         transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        background: #ffffff;
-        color: black;
+        color: var(--primary-color);
+      }
+
+      /* Responsive Improvements */
+      @media (max-width: 768px) {
+        .theme-toggle {
+          top: 20px;
+          right: 20px;
+          width: 45px;
+          height: 45px;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .contact-content {
+          flex-direction: column;
+        }
+
+        .about-info {
+          flex-direction: column;
+        }
+      }
+
+      /* Loading Animation */
+      .loading-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: var(--primary-color);
+        z-index: 9999;
+        transition: width 0.3s ease;
       }
     </style>
   </head>
   <body>
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Start Navbar Section -->
     <nav class="navbar">
       <ul class="links">
@@ -84,9 +366,9 @@
     <header>
       <a class="header" href="#home">
         <div class="logo">
-          <img src="images/Ahmad Salloum.jpeg" alt="logo" />
+          <img src="images/Ahmad Salloum.jpeg" alt="Ahmad Salloum" />
         </div>
-        <h3 class="profileName">Ahmad Ghazi Salloum</h3>
+        <h3 class="profileName">AS</h3>
       </a>
     </header>
     <!-- End Header Section -->
@@ -94,49 +376,59 @@
     <!-- Start Home Section -->
     <section class="home" id="home">
       <div class="home-content">
-        <div class="profileImage">
-          <img src="images/Ahmad Salloum.jpeg" alt="profileImage" />
+        <div class="profileImage animate-fade-in">
+          <img
+            src="images/Ahmad Salloum.jpeg"
+            alt="Ahmad Salloum - Professional Web Developer"
+          />
         </div>
-        <div class="profile-info">
+        <div class="profile-info animate-fade-in" style="animation-delay: 0.2s">
           <h1 class="username">Ahmad Ghazi Salloum</h1>
           <p class="profile-description">
-            <span>Web Designer & Developer</span>
+            <span>Professional Web Developer</span>
+          </p>
+          <p class="profile-tagline">
+            Transforming ideas into exceptional digital experiences
           </p>
         </div>
 
-        <ul class="social-icons">
-          <span class="find-me">FIND WITH ME</span>
+        <ul class="social-icons animate-fade-in" style="animation-delay: 0.4s">
+          <span class="find-me">CONNECT WITH ME</span>
           <div class="social-links">
             <li>
               <a
-                href="https://www.instagram.com/ahmad_salloum92/"
+                href="https://www.linkedin.com/in/ahmad-ghazi-salloum/"
                 class="hover-effect-gradient"
+                aria-label="LinkedIn Profile"
               >
-                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
               </a>
             </li>
             <li>
               <a
                 href="https://github.com/Salloum92"
                 class="hover-effect-gradient"
+                aria-label="GitHub Profile"
               >
                 <i class="icon-social-github"></i>
               </a>
             </li>
             <li>
               <a
-                href="https://www.facebook.com/Salllllllom/"
+                href="https://www.instagram.com/ahmad_salloum92/"
                 class="hover-effect-gradient"
+                aria-label="Instagram Profile"
               >
-                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
               </a>
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/in/ahmad-ghazi-salloum/"
+                href="https://www.facebook.com/Salllllllom/"
                 class="hover-effect-gradient"
+                aria-label="Facebook Profile"
               >
-                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-facebook-f"></i>
               </a>
             </li>
           </div>
@@ -149,23 +441,40 @@
     <section class="about" id="about">
       <div class="heading">
         <h2>About <span>Me</span></h2>
-        <img src="images/dots-bg-light.svg" alt="image" />
+        <img src="images/dots-bg-light.svg" alt="decoration dots" />
       </div>
 
       <div class="about-content">
         <div class="about-info">
           <div class="about-info-description">
             <p>
-              I am Ahmad Salloum, web desinger & developer from Palestine. I
-              have rich experience in web site design and building and
-              customization, and building SPA [Single Page Application] using
-              React.js Framework.
+              I am Ahmad Salloum, a professional Web Developer with over 8 years
+              of experience in creating digital solutions. I specialize in
+              transforming design concepts into fully functional, responsive
+              websites with high efficiency and professionalism.
             </p>
+            <p>
+              My expertise includes front-end development with React.js and
+              JavaScript, back-end development with PHP and MySQL, and creating
+              responsive designs that work seamlessly across all devices. I take
+              pride in implementing designs with precision and technical
+              excellence.
+            </p>
+            <div class="key-expertise">
+              <h4>Core Competencies:</h4>
+              <ul>
+                <li>Modern JavaScript Frameworks (React, Vue)</li>
+                <li>Responsive Web Design & Cross-Browser Compatibility</li>
+                <li>RESTful API Development & Integration</li>
+                <li>Performance Optimization & SEO Best Practices</li>
+                <li>Agile Development & Project Management</li>
+              </ul>
+            </div>
           </div>
           <div class="about-info-skills">
             <div class="skills-row">
               <div class="skills-details">
-                <p>HTML</p>
+                <p>HTML/CSS</p>
                 <span>95%</span>
               </div>
               <div class="progress html">
@@ -175,8 +484,8 @@
 
             <div class="skills-row">
               <div class="skills-details">
-                <p>CSS</p>
-                <span>85%</span>
+                <p>JavaScript</p>
+                <span>90%</span>
               </div>
               <div class="progress css">
                 <span></span>
@@ -185,8 +494,8 @@
 
             <div class="skills-row">
               <div class="skills-details">
-                <p>JavaScript</p>
-                <span>70%</span>
+                <p>React.js</p>
+                <span>85%</span>
               </div>
               <div class="progress js">
                 <span></span>
@@ -194,7 +503,7 @@
             </div>
             <div class="skills-row">
               <div class="skills-details">
-                <p>php</p>
+                <p>PHP & MySQL</p>
                 <span>85%</span>
               </div>
               <div class="progress html">
@@ -203,8 +512,8 @@
             </div>
             <div class="skills-row">
               <div class="skills-details">
-                <p>Bootstrab</p>
-                <span>95%</span>
+                <p>Bootstrap</p>
+                <span>90%</span>
               </div>
               <div class="progress html">
                 <span></span>
@@ -212,7 +521,7 @@
             </div>
             <div class="skills-row">
               <div class="skills-details">
-                <p>Sql</p>
+                <p>Responsive Design</p>
                 <span>95%</span>
               </div>
               <div class="progress html">
@@ -227,7 +536,7 @@
         <div class="fact-item hover-effect-gradient">
           <i class="icon icon-fire"></i>
           <div class="fact-details">
-            <h3 class="number">15</h3>
+            <h3 class="number">30+</h3>
             <p>Projects Completed</p>
           </div>
         </div>
@@ -235,24 +544,24 @@
         <div class="fact-item hover-effect-gradient">
           <i class="icon icon-cup"></i>
           <div class="fact-details">
-            <h3 class="number">632</h3>
-            <p>Cup of coffee</p>
+            <h3 class="number">1000+</h3>
+            <p>Cups of Coffee</p>
           </div>
         </div>
 
         <div class="fact-item hover-effect-gradient">
           <i class="icon icon-people"></i>
           <div class="fact-details">
-            <h3 class="number">5</h3>
-            <p>Satisfied clients</p>
+            <h3 class="number">25+</h3>
+            <p>Satisfied Clients</p>
           </div>
         </div>
 
         <div class="fact-item hover-effect-gradient">
           <i class="icon icon-badge"></i>
           <div class="fact-details">
-            <h3 class="number">4</h3>
-            <p>Nominees winner</p>
+            <h3 class="number">8+</h3>
+            <p>Years Experience</p>
           </div>
         </div>
       </div>
@@ -270,34 +579,34 @@
         <div class="service-box hover-effect-gradient">
           <div class="service-box-container">
             <div class="service-icon">
-              <i class="icon icon-menu"></i>
+              <i class="fas fa-code"></i>
             </div>
             <div class="service-details">
-              <h2>Animation Coding</h2>
+              <h2>Frontend Development</h2>
               <p>
-                I throw myself down among the tall grass by the stream as I lie
-                close to the earth.
+                Professional implementation of responsive user interfaces using
+                React.js, JavaScript, and modern CSS frameworks with focus on
+                performance.
               </p>
             </div>
-            <div class="icon">
-            </div>
+            <div class="icon"><i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
         <div class="service-box hover-effect-gradient">
           <div class="service-box-container">
             <div class="service-icon">
-              <i class="fas fa-code"></i>
+              <i class="fas fa-server"></i>
             </div>
             <div class="service-details">
-              <h2>Web Development</h2>
+              <h2>Backend Development</h2>
               <p>
-                Refers To The Creating, Building, And Maintaining Of Websites.
-                It Includes Aspects Such As Web Design
+                Developing robust server-side solutions, RESTful APIs, and
+                database architecture using PHP, MySQL, and modern backend
+                technologies.
               </p>
             </div>
-            <div class="icon">
-            </div>
+            <div class="icon"><i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
@@ -307,13 +616,14 @@
               <i class="fab fa-react"></i>
             </div>
             <div class="service-details">
-              <h2>React JS</h2>
+              <h2>React JS Development</h2>
               <p>
-                Building Interactive User Interfaces And Web Applications
-                Quickly And Efficiently
+                Creating dynamic single-page applications with React.js,
+                implementing state management, and building reusable component
+                libraries.
               </p>
             </div>
-            <div class="icon"></div>
+            <div class="icon"><i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
@@ -323,45 +633,48 @@
               <i class="fas fa-mobile"></i>
             </div>
             <div class="service-details">
-              <h2>Responsive Designs</h2>
+              <h2>Responsive Web Development</h2>
               <p>
-                Creating Web Pages That Look Good On All Devices! A Responsive
-                Web Design Will Automatically Adjust For Different Screens
+                Building websites that provide optimal viewing experience across
+                all devices, from desktop to mobile, using modern development
+                techniques.
               </p>
             </div>
-            <div class="icon"></div>
+            <div class="icon"><i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
         <div class="service-box hover-effect-gradient">
           <div class="service-box-container">
             <div class="service-icon">
-              <i class="fab fa-slack"></i>
+              <i class="fas fa-laptop-code"></i>
             </div>
             <div class="service-details">
-              <h2>UI</h2>
+              <h2>Website Implementation</h2>
               <p>
-                It uses a dictionary of over 200 Latin words, combined with a
-                handful of model sentence.
+                Professional implementation of design concepts into fully
+                functional websites with high precision and technical
+                excellence.
               </p>
             </div>
-            <div class="icon"></div>
+            <div class="icon"><i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
 
         <div class="service-box hover-effect-gradient">
           <div class="service-box-container">
             <div class="service-icon">
-              <i class="fas fa-tv"></i>
+              <i class="fas fa-shopping-cart"></i>
             </div>
             <div class="service-details">
-              <h2>UI/UX design</h2>
+              <h2>E-commerce Solutions</h2>
               <p>
-                It uses a dictionary of over 200 Latin words, combined with a
-                handful of model sentence.
+                Developing complete online store solutions with secure payment
+                integration, inventory management, and customer-focused
+                functionality.
               </p>
             </div>
-            <div class="icon"></div>
+            <div class="icon"><i class="fas fa-arrow-right"></i></div>
           </div>
         </div>
       </div>
@@ -382,10 +695,11 @@
               <i class="icon-graduation"></i>
             </div>
             <span>2010 - 2012</span>
-            <h2>Diploma Degree</h2>
+            <h2>Diploma in IT</h2>
             <p>
               Diploma in Information Technology from Damascus Middle Institute -
-              UNRWA (DTC).
+              UNRWA (DTC), focusing on foundational programming and system
+              administration.
             </p>
           </div>
 
@@ -394,10 +708,11 @@
               <i class="icon-graduation"></i>
             </div>
             <span>2012 - 2017</span>
-            <h2>Bachelor’s Degree</h2>
+            <h2>Bachelor's Degree in IT</h2>
             <p>
               Bachelor's degree in Information Technology from Syrian Virtual
-              University (SVU).
+              University (SVU), specializing in software development and
+              database management.
             </p>
           </div>
 
@@ -406,10 +721,11 @@
               <i class="icon-graduation"></i>
             </div>
             <span>2022 - Present</span>
-            <h2>Master Degree</h2>
+            <h2>Master's in Web Sciences</h2>
             <p>
               Currently pursuing a Master's degree in Web Sciences at Syrian
-              Virtual University.
+              Virtual University, focusing on advanced web technologies and
+              development.
             </p>
           </div>
           <span class="line"></span>
@@ -420,19 +736,15 @@
             <div class="icon">
               <i class="icon-briefcase"></i>
             </div>
-            <span>2017 - Present</span>
-            <h2>Web Developer</h2>
-            <p>Experienced in Backend development and building APIs.</p>
-          </div>
-
-          <div class="experience-box-details">
-            <div class="icon">
-              <i class="icon-briefcase"></i>
-            </div>
-            <span>2015 - Present</span>
-            <h2>Front-End Developer</h2>
+            <span>2021 - Present</span>
+            <h2>
+              IT Manager & Design Supervisor
+              <span class="certification-badge">Current</span>
+            </h2>
             <p>
-              Specialized in Front-End development using modern technologies.
+              AMG Company - Istanbul<br />
+              Managing IT operations and supervising design implementations for
+              various projects, ensuring high-quality web development standards.
             </p>
           </div>
 
@@ -440,11 +752,29 @@
             <div class="icon">
               <i class="icon-briefcase"></i>
             </div>
-            <span>2020 - Present</span>
-            <h2>Back-End Developer</h2>
+            <span>2019 - 2021</span>
+            <h2>Front-End Engineer</h2>
             <p>
-              Currently working as a Backend Developer with experience in
-              server-side development, databases, and APIs.
+              MABCO Company - Damascus<br />
+              Specialized in creating responsive, interactive user interfaces
+              using modern JavaScript frameworks and CSS for optimal user
+              experience.
+            </p>
+          </div>
+
+          <div class="experience-box-details">
+            <div class="icon">
+              <i class="icon-briefcase"></i>
+            </div>
+            <span>2015 - Present</span>
+            <h2>
+              Freelance Web Developer
+              <span class="certification-badge">Freelance</span>
+            </h2>
+            <p>
+              Working with various clients to implement website designs and
+              develop custom web solutions with professional execution and
+              technical excellence.
             </p>
           </div>
 
@@ -467,18 +797,25 @@
             <img src="images/pro 1.png" alt="Dental Clinic Berlin Website" />
           </div>
           <div class="blog-box-details">
-            <span class="category">Website</span>
-            <a href="https://www.paris35.de/index.php" class="live-demo-btn"
-              >Live Demo</a
-            >
+            <span class="category">Medical Website</span>
+            <a href="https://www.paris35.de/index.php" class="live-demo-btn">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
           </div>
           <h2 class="blog-box-title">
-            Dental Clinic Berlin - Professional Website
+            Dental Clinic Berlin - Professional Healthcare Platform
           </h2>
           <p class="project-description">
-            A modern website for a dental clinic in Berlin with appointment
-            booking system and patient portal.
+            A comprehensive healthcare website featuring appointment scheduling,
+            patient portal, and service information for a leading dental clinic
+            in Berlin.
           </p>
+          <div class="project-tech">
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Responsive</span>
+          </div>
         </div>
 
         <div class="blog-box hover-effect-gradient">
@@ -489,16 +826,25 @@
             />
           </div>
           <div class="blog-box-details">
-            <span class="category">E-commerce</span>
-            <a href="https://rukn-alamasy.com.sa/" class="live-demo-btn"
-              >Live Demo</a
-            >
+            <span class="category">E-commerce Platform</span>
+            <a href="https://rukn-alamasy.com.sa/" class="live-demo-btn">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
           </div>
-          <h2 class="blog-box-title">Safety Equipment Store - Saudi Arabia</h2>
+          <h2 class="blog-box-title">
+            Safety Equipment E-commerce - Saudi Market
+          </h2>
           <p class="project-description">
-            E-commerce platform for selling and displaying safety and security
-            equipment in Saudi Arabia with online ordering system.
+            Complete e-commerce solution for safety equipment distribution in
+            Saudi Arabia, featuring advanced product filtering, secure payments,
+            and inventory management.
           </p>
+          <div class="project-tech">
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Payment Gateway</span>
+          </div>
         </div>
 
         <div class="blog-box hover-effect-gradient">
@@ -506,20 +852,28 @@
             <img src="images/pro3.png" alt="Electronics E-commerce Store" />
           </div>
           <div class="blog-box-details">
-            <span class="category">E-commerce</span>
+            <span class="category">E-commerce Platform</span>
             <a
               href="https://salloum92.github.io/Electrical-Tools-Store/"
               class="live-demo-btn"
-              >Live Demo</a
             >
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
           </div>
           <h2 class="blog-box-title">
-            Electronics Store - E-commerce Platform
+            Electronics Store - Modern E-commerce Solution
           </h2>
           <p class="project-description">
-            Modern e-commerce website for selling electronic products with
-            advanced filtering and secure payment system.
+            Feature-rich e-commerce platform for electronics with advanced
+            search, shopping cart functionality, user accounts, and secure
+            checkout process.
           </p>
+          <div class="project-tech">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5/CSS3</span>
+            <span class="tech-tag">Responsive</span>
+            <span class="tech-tag">UI/UX</span>
+          </div>
         </div>
 
         <div class="blog-box hover-effect-gradient">
@@ -527,28 +881,36 @@
             <img src="images/pro4 (2).png" alt="Restaurant Landing Page" />
           </div>
           <div class="blog-box-details">
-            <span class="category">Landing Page</span>
-            <a href="https://salloum92.github.io/Rosa/" class="live-demo-btn"
-              >Live Demo</a
-            >
+            <span class="category">Restaurant Website</span>
+            <a href="https://salloum92.github.io/Rosa/" class="live-demo-btn">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
           </div>
           <h2 class="blog-box-title">
-            Restaurant Landing Page - Modern Design
+            Restaurant Website - Modern Culinary Experience
           </h2>
           <p class="project-description">
-            Beautiful and responsive landing page for a restaurant with menu
-            display, reservation system, and online ordering.
+            Elegant restaurant website with online reservation system,
+            interactive menu, gallery showcase, and seamless user experience for
+            food enthusiasts.
           </p>
+          <div class="project-tech">
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Animation</span>
+            <span class="tech-tag">Mobile First</span>
+          </div>
         </div>
 
-        <!-- رابط لمشاهدة المزيد من المشاريع -->
+        <!-- View More Projects -->
         <div class="view-more-projects">
           <a
             href="https://github.com/salloum92"
             class="view-more-btn"
             target="_blank"
+            rel="noopener noreferrer"
           >
-            لمشاهدة باقي المشاريع اضغط هنا
+            <i class="icon-social-github"></i> Explore More Projects
           </a>
         </div>
       </div>
@@ -565,21 +927,29 @@
       <div class="contact-content">
         <div class="contact-info">
           <div class="image">
-            <img src="images/contact.png" alt="contactImage" />
+            <img src="images/contact.png" alt="Contact Ahmad Salloum" />
           </div>
 
           <div class="contact-info-details">
             <div class="user">
               <h2>Ahmad Salloum</h2>
-              <p>Web Designer & Developer</p>
+              <p>Professional Web Developer</p>
             </div>
             <p class="description">
-              I am available for freelance work. Connect with me via and call in
-              to my account.
+              I'm available for freelance projects and full-time opportunities.
+              Let's discuss how we can bring your digital vision to life with
+              professional web development solutions.
             </p>
             <div class="user-contact">
-              <p>Phone: <span>+905347999831</span></p>
-              <p>Email: <span>ahmad.salloum00@gmail.com</span></p>
+              <p><i class="fas fa-phone"></i> <span>+905347999831</span></p>
+              <p>
+                <i class="fas fa-envelope"></i>
+                <span>ahmad.salloum00@gmail.com</span>
+              </p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Istanbul, Turkey / Remote</span>
+              </p>
             </div>
           </div>
         </div>
@@ -588,41 +958,176 @@
           <div class="input-row">
             <div class="input-group">
               <label for="username">Your Name</label>
-              <input type="text" id="username" />
+              <input
+                type="text"
+                id="username"
+                placeholder="Enter your full name"
+              />
             </div>
 
             <div class="input-group">
-              <label for="phone">phone number</label>
-              <input type="text" id="phone" />
+              <label for="phone">Phone Number</label>
+              <input type="text" id="phone" placeholder="+90 5XX XXX XX XX" />
             </div>
           </div>
 
           <div class="input-group">
-            <label for="emaik">Email</label>
-            <input type="email" id="email" />
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="your.email@example.com"
+            />
           </div>
 
           <div class="input-group">
-            <label for="subject">subject</label>
-            <input type="text" id="subject" />
+            <label for="subject">Project Type</label>
+            <select id="subject">
+              <option value="">Select project type</option>
+              <option value="web-development">Web Development</option>
+              <option value="ecommerce">E-commerce Solution</option>
+              <option value="consulting">Technical Consulting</option>
+              <option value="other">Other</option>
+            </select>
           </div>
 
           <div class="input-group">
-            <label for="message">message</label>
-            <textarea id="message"></textarea>
+            <label for="message">Project Details</label>
+            <textarea
+              id="message"
+              placeholder="Tell me about your project requirements, timeline, and budget..."
+            ></textarea>
           </div>
 
-          <button class="btn hover-effect-gradient">send message</button>
+          <button class="btn hover-effect-gradient">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
         </div>
       </div>
     </section>
-    <!-- End Contact Me Section -->
+    <!-- End Contact Section -->
 
     <!-- Start Footer Section -->
     <footer>
-      <img src="" alt="logo" />
-      <p>&copy; Ahmad Salloum</p>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">AS</div>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/ahmad-ghazi-salloum/"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="https://github.com/Salloum92"
+              ><i class="icon-social-github"></i
+            ></a>
+            <a href="https://www.instagram.com/ahmad_salloum92/"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://www.facebook.com/Salllllllom/"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+          </div>
+        </div>
+        <p>&copy; 2023 Ahmad Salloum. All Rights Reserved.</p>
+        <p class="footer-tagline">Crafting digital excellence since 2015</p>
+      </div>
     </footer>
     <!-- End Footer Section -->
+
+    <script>
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = themeToggle.querySelector("i");
+      const loadingBar = document.getElementById("loadingBar");
+
+      // Check for saved theme preference or default to dark
+      const currentTheme = localStorage.getItem("theme") || "dark";
+      document.body.classList.toggle("light-theme", currentTheme === "light");
+      updateThemeIcon();
+
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+        const theme = document.body.classList.contains("light-theme")
+          ? "light"
+          : "dark";
+        localStorage.setItem("theme", theme);
+        updateThemeIcon();
+      });
+
+      function updateThemeIcon() {
+        if (document.body.classList.contains("light-theme")) {
+          themeIcon.classList.remove("fa-moon");
+          themeIcon.classList.add("fa-sun");
+        } else {
+          themeIcon.classList.remove("fa-sun");
+          themeIcon.classList.add("fa-moon");
+        }
+      }
+
+      // Loading Bar Animation
+      window.addEventListener("load", () => {
+        loadingBar.style.width = "100%";
+        setTimeout(() => {
+          loadingBar.style.opacity = "0";
+        }, 500);
+      });
+
+      // Smooth Scrolling for Navigation Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Animate skill bars when they come into view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const skillBars = entry.target.querySelectorAll(".progress span");
+              skillBars.forEach((bar) => {
+                const width = bar.parentElement.parentElement.querySelector(
+                  ".skills-details span"
+                ).textContent;
+                bar.style.width = width;
+              });
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelector(".about-info-skills") &&
+        observer.observe(document.querySelector(".about-info-skills"));
+
+      // Form Submission
+      document
+        .querySelector(".contact-form")
+        ?.addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your message! I will get back to you soon.");
+          this.reset();
+        });
+
+      // Add loading bar progress during page load
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        loadingBar.style.width = `${Math.min(progress, 90)}%`;
+
+        if (progress >= 90) {
+          clearInterval(interval);
+        }
+      }, 200);
+    </script>
   </body>
 </html>
