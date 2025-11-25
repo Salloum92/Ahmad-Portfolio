@@ -308,7 +308,6 @@ html::-webkit-scrollbar-track {
 
 .about-info-description p {
   line-height: 2;
-  letter-spacing: 1px;
   text-align: justify;
   margin-bottom: 20px;
 }
@@ -780,3 +779,4 @@ footer img {
     gap: 10px;
   }
 }
+
