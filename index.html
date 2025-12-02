@@ -23,7 +23,8 @@
       property="og:description"
       content="Professional Web Developer with 8+ years experience. Specializing in React, PHP, JavaScript & responsive web development."
     />
-    <!-- رابط الصورة التي ستظهر عند المشاركة - ضع رابط الصورة الحقيقي هنا -->
+
+    <!-- ضع رابط الصورة الصحيح هنا -->
     <meta
       property="og:image"
       content="https://salloum92.github.io/Ahmad-Portfolio/images/social-share.jpg"
@@ -31,7 +32,10 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:url" content="https://salloum92.github.io" />
+    <meta
+      property="og:url"
+      content="https://salloum92.github.io/Ahmad-Portfolio"
+    />
     <meta property="og:site_name" content="Ahmad Salloum Portfolio" />
     <meta property="og:locale" content="en_US" />
 
@@ -65,7 +69,58 @@
     />
 
     <!-- Structured Data for SEO -->
+    <script type="application/ld+json"></script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <!-- STYLESHEETS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style/all.min.css" />
+    <link rel="stylesheet" href="style/simple-line-icons.css" />
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Ahmad Salloum | Professional Web Developer</title>
+
+    <!-- ========== IMPORTANT: قم بإنشاء صورة social-share.jpg ========== -->
+    <!--
+    خطوات لإنشاء الصورة:
+    1. أنشئ صورة بقياس 1200×630 بكسل
+    2. اكتب عليها: "Ahmad Salloum | Web Developer"
+    3. أضف صورتك أو شعاراً
+    4. احفظها باسم social-share.jpg
+    5. ضعها في مجلد images في المشروع
+    -->
+    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
+       {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ahmad Salloum",
+        "jobTitle": "Professional Web Developer",
+        "url": "https://salloum92.github.io/Ahmad-Portfolio",
+        "image": "https://salloum92.github.io/Ahmad-Portfolio/images/Ahmad%20Salloum.jpeg",
+        "sameAs": [
+          "https://www.linkedin.com/in/ahmad-ghazi-salloum/",
+          "https://github.com/Salloum92",
+          "https://www.instagram.com/ahmad_salloum92/",
+          "https://www.facebook.com/Salllllllom/"
+        ],
+        "knowsAbout": [
+          "Web Development",
+          "React.js",
+          "JavaScript",
+          "PHP",
+          "MySQL",
+          "Responsive Design"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Web Developer",
+          "yearsInOccupation": 8
+        }
+      }
       {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -95,7 +150,11 @@
       }
     </script>
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="images/Ahmad Salloum.jpeg"
+    />
 
     <!-- STYLESHEETS -->
     <link
