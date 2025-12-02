@@ -13,19 +13,30 @@
       content="web developer, frontend developer, react, javascript, php, mysql"
     />
 
-    <!-- Open Graph tags for social sharing -->
+    <!-- ========== OPEN GRAPH META TAGS ========== -->
+    <meta property="og:type" content="website" />
     <meta
       property="og:title"
       content="Ahmad Salloum | Professional Web Developer"
     />
     <meta
       property="og:description"
-      content="Transform your ideas into exceptional digital experiences"
+      content="Professional Web Developer with 8+ years experience. Specializing in React, PHP, JavaScript & responsive web development."
     />
-    <meta property="og:image" content="images/Ahmad Salloum.jpeg" />
-    <meta property="og:url" content="https://yourdomain.com" />
+    <!-- رابط الصورة التي ستظهر عند المشاركة - ضع رابط الصورة الحقيقي هنا -->
+    <meta
+      property="og:image"
+      content="https://salloum92.github.io/images/Ahmad
+    Salloum.jpeg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:url" content="https://salloum92.github.io" />
+    <meta property="og:site_name" content="Ahmad Salloum Portfolio" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter Card -->
+    <!-- ========== TWITTER CARD META TAGS ========== -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -33,9 +44,26 @@
     />
     <meta
       name="twitter:description"
-      content="Professional Web Developer with 8+ years experience"
+      content="Professional Web Developer with 8+ years experience. Transforming ideas into exceptional digital experiences."
     />
-    <meta name="twitter:image" content="images/Ahmad Salloum.jpeg" />
+    <meta
+      name="twitter:image"
+      content="https://salloum92.github.io/images/social-share.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Ahmad Salloum - Professional Web Developer Portfolio"
+    />
+
+    <!-- ========== WHATSAPP SPECIFIC ========== -->
+    <meta
+      property="og:image:secure_url"
+      content="https://salloum92.github.io/images/social-share.jpg"
+    />
+    <meta
+      name="thumbnail"
+      content="https://salloum92.github.io/images/social-share.jpg"
+    />
 
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -44,7 +72,8 @@
         "@type": "Person",
         "name": "Ahmad Salloum",
         "jobTitle": "Professional Web Developer",
-        "url": "https://yourdomain.com",
+        "url": "https://salloum92.github.io",
+        "image": "https://salloum92.github.io/images/Ahmad Salloum.jpeg",
         "sameAs": [
           "https://www.linkedin.com/in/ahmad-ghazi-salloum/",
           "https://github.com/Salloum92",
@@ -78,6 +107,7 @@
     <link rel="stylesheet" href="style/simple-line-icons.css" />
     <link rel="stylesheet" href="style/style.css" />
     <title>Ahmad Salloum | Professional Web Developer</title>
+
     <style>
       :root {
         --main-color: #212428;
@@ -971,6 +1001,11 @@
         .footer-content {
           flex-direction: column;
           text-align: center;
+          justify-content: center;
+        }
+
+        .footer-social {
+          justify-content: center;
         }
 
         .contact-content {
@@ -1023,15 +1058,6 @@
           width: 100%;
           justify-content: center;
           padding: 14px 30px;
-        }
-
-        .footer-content {
-          justify-content: center;
-          text-align: center;
-        }
-
-        .footer-social {
-          justify-content: center;
         }
       }
 
