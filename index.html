@@ -166,6 +166,10 @@
         direction: ltr;
       }
 
+      [dir="rtl"] body {
+        direction: rtl;
+      }
+
       .container {
         max-width: var(--container);
         margin: 0 auto;
@@ -422,6 +426,11 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+      }
+
+      [dir="rtl"] .hero-availability {
+        margin-left: 0;
+        margin-right: 8px;
       }
 
       .hero-availability::before {
@@ -897,7 +906,7 @@
         z-index: 1000;
       }
 
-      body[dir="rtl"] .controls-container {
+      [dir="rtl"] .controls-container {
         right: auto;
         left: 30px;
       }
@@ -971,7 +980,7 @@
         white-space: nowrap;
       }
 
-      body[dir="rtl"] .navbar {
+      [dir="rtl"] .navbar {
         left: 50%;
         transform: translateX(-50%);
       }
@@ -1021,7 +1030,7 @@
         border: 1px solid rgba(var(--hero-accent), 0.1);
       }
 
-      body[dir="rtl"] .nav-tooltip {
+      [dir="rtl"] .nav-tooltip {
         right: auto;
         left: 70px;
       }
@@ -1032,7 +1041,7 @@
         transform: translateX(-5px);
       }
 
-      body[dir="rtl"] .nav-link:hover .nav-tooltip {
+      [dir="rtl"] .nav-link:hover .nav-tooltip {
         transform: translateX(5px);
       }
 
@@ -1081,11 +1090,22 @@
         padding-left: 15px;
       }
 
+      [dir="rtl"] .skill-name {
+        padding-left: 0;
+        padding-right: 15px;
+      }
+
       .skill-name::before {
         content: "▸";
         position: absolute;
         left: 0;
         color: var(--primary);
+      }
+
+      [dir="rtl"] .skill-name::before {
+        left: auto;
+        right: 0;
+        transform: rotate(180deg);
       }
 
       .skill-percentage {
@@ -1338,7 +1358,7 @@
         box-shadow: var(--shadow-lg);
       }
 
-      body[dir="rtl"] .timeline-item:hover {
+      [dir="rtl"] .timeline-item:hover {
         transform: translateY(-8px) scale(1.02);
       }
 
@@ -1363,7 +1383,7 @@
         color: var(--primary);
       }
 
-      body[dir="rtl"] .timeline-item:hover .timeline-title {
+      [dir="rtl"] .timeline-item:hover .timeline-title {
         transform: translateX(-5px);
       }
 
@@ -1396,7 +1416,7 @@
         background-clip: text;
       }
 
-      body[dir="rtl"] .collection-heading {
+      [dir="rtl"] .collection-heading {
         text-align: right;
       }
 
@@ -1452,7 +1472,7 @@
         z-index: 10;
       }
 
-      body[dir="rtl"] .slider-nav {
+      [dir="rtl"] .slider-nav {
         right: auto;
         left: 2rem;
       }
@@ -1535,7 +1555,7 @@
         font-weight: 600;
       }
 
-      body[dir="rtl"] .project-status {
+      [dir="rtl"] .project-status {
         right: auto;
         left: 20px;
       }
@@ -1691,7 +1711,7 @@
         box-shadow: var(--shadow-xl);
       }
 
-      body[dir="rtl"] .certification-card:hover {
+      [dir="rtl"] .certification-card:hover {
         transform: translateY(-15px);
       }
 
@@ -1832,7 +1852,7 @@
         transition: all 0.3s ease;
       }
 
-      body[dir="rtl"] .testimonial-text {
+      [dir="rtl"] .testimonial-text {
         padding-left: 0;
         padding-right: 20px;
       }
@@ -1849,7 +1869,7 @@
         transition: all 0.3s ease;
       }
 
-      body[dir="rtl"] .testimonial-text::before {
+      [dir="rtl"] .testimonial-text::before {
         left: auto;
         right: 0;
       }
@@ -1912,12 +1932,12 @@
         opacity: 0.3;
         position: absolute;
         top: 20px;
-        left: 20px;
+        right: 20px;
       }
 
-      body[dir="rtl"] .step-number {
-        left: auto;
+      [dir="rtl"] .step-number {
         right: 20px;
+        left: auto;
       }
 
       .process-step:hover .step-number {
@@ -2154,12 +2174,12 @@
 
       .footer-section ul li a:hover {
         color: var(--primary);
-        padding-left: 10px;
+        padding-right: 10px;
       }
 
-      body[dir="rtl"] .footer-section ul li a:hover {
-        padding-left: 0;
-        padding-right: 10px;
+      [dir="rtl"] .footer-section ul li a:hover {
+        padding-right: 0;
+        padding-left: 10px;
       }
 
       .footer-bottom {
@@ -2182,7 +2202,7 @@
           max-width: 95vw;
         }
 
-        body[dir="rtl"] .navbar {
+        [dir="rtl"] .navbar {
           left: 50%;
           transform: translateX(-50%);
         }
@@ -2192,7 +2212,7 @@
           bottom: 200px;
         }
 
-        body[dir="rtl"] .controls-container {
+        [dir="rtl"] .controls-container {
           left: 20px;
         }
 
@@ -2265,6 +2285,10 @@
           justify-content: center;
         }
 
+        [dir="rtl"] .hero-availability {
+          margin-right: 0;
+        }
+
         .navbar {
           padding: 10px;
           gap: 15px;
@@ -2280,7 +2304,7 @@
           right: 20px;
         }
 
-        body[dir="rtl"] .controls-container {
+        [dir="rtl"] .controls-container {
           left: 20px;
         }
 
@@ -2440,6 +2464,30 @@
               <i class="fas fa-paper-plane"></i>
               <span class="btn-text">Send Message</span>
             </a>
+          </div>
+
+          <div class="hero-tech-stack">
+            <div class="tech-label">Tech Stack:</div>
+            <div class="tech-icons">
+              <div class="tech-icon">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="tech-icon">
+                <i class="fab fa-css3-alt"></i>
+              </div>
+              <div class="tech-icon">
+                <i class="fab fa-js"></i>
+              </div>
+              <div class="tech-icon">
+                <i class="fab fa-react"></i>
+              </div>
+              <div class="tech-icon">
+                <i class="fab fa-php"></i>
+              </div>
+              <div class="tech-icon">
+                <i class="fas fa-database"></i>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -3645,9 +3693,14 @@
           const languageToggle = document.getElementById("languageToggle");
           let currentLanguage = "en"; // English by default
 
+          // Check for saved language preference
+          const savedLanguage = localStorage.getItem("language");
+          if (savedLanguage) {
+            currentLanguage = savedLanguage;
+          }
+
           // Set initial language
           updateLanguage(currentLanguage);
-          languageToggle.innerHTML = '<i class="fas fa-language"></i>';
 
           function updateLanguage(lang) {
             // Update HTML direction and language
