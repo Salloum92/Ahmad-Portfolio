@@ -79,11 +79,11 @@
 
     <style>
       :root {
-        /* Updated Hero Section Colors as Main Theme */
+        /* Updated Hero Section Colors as Main Theme - DARK MODE (Default) */
         --primary: #d27a35; /* Warm copper accent from hero */
         --primary-dark: #b86628;
         --secondary: #1fb6ff; /* Secondary accent from hero */
-        --dark: #0b0f12; /* Hero background */
+        --dark: #0b0f12; /* Hero background - DARK */
         --darker: #020617;
         --light: #e6eef6; /* Hero text color */
         --gray: #9aa6b2; /* Hero muted color */
@@ -95,7 +95,7 @@
         ); /* Hero primary gradient */
         --gradient-secondary: linear-gradient(135deg, #1fb6ff, #10b981);
 
-        /* Hero Section Custom Colors - Modern Glass Theme */
+        /* Hero Section Custom Colors - Modern Glass Theme - DARK */
         --hero-bg: #0b0f12;
         --hero-panel: #0f1720;
         --hero-muted: #9aa6b2;
@@ -110,7 +110,7 @@
         --radius-lg: 24px;
         --radius-xl: 32px;
 
-        /* Shadows */
+        /* Shadows - Dark */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
         --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
         --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -123,24 +123,31 @@
       }
 
       [data-theme="light"] {
-        /* Light theme updated with hero colors */
-        --dark: #f8fafc;
+        /* LIGHT THEME COLORS - FIXED AS REQUESTED */
+        --dark: #f8fafc; /* Light background */
         --darker: #e2e8f0;
         --light: #0b0f12; /* Dark text on light background */
         --gray: #64748b;
         --gray-light: #334155;
+
+        /* Light theme shadows with warm accents */
         --shadow-sm: 0 2px 8px rgba(210, 122, 53, 0.1);
         --shadow-md: 0 4px 20px rgba(210, 122, 53, 0.15);
         --shadow-lg: 0 10px 40px rgba(210, 122, 53, 0.2);
+        --shadow-xl: 0 20px 60px rgba(210, 122, 53, 0.3);
 
-        /* Light theme for hero */
+        /* Light theme for hero section */
         --hero-bg: #f8fafc;
         --hero-panel: #ffffff;
         --hero-muted: #64748b;
-        --hero-accent: #d27a35;
-        --hero-accent-2: #1fb6ff;
+        --hero-accent: #d27a35; /* Keeping warm copper */
+        --hero-accent-2: #1fb6ff; /* Keeping blue accent */
         --hero-glass: rgba(15, 23, 42, 0.03);
         --hero-text: #0b0f12;
+
+        /* Special light theme gradients for better visibility */
+        --gradient-primary: linear-gradient(135deg, #d27a35, #ff9860);
+        --gradient-secondary: linear-gradient(135deg, #1fb6ff, #10b981);
       }
 
       * {
@@ -156,6 +163,7 @@
         overflow-x: hidden;
         transition: var(--transition);
         min-height: 100vh;
+        direction: ltr;
       }
 
       .container {
@@ -364,9 +372,11 @@
         text-decoration: none;
         border: 1px solid rgba(255, 255, 255, 0.06);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
+        box-shadow: var(--shadow-md);
         backdrop-filter: blur(8px);
         font-size: 16px;
+        color: var(--light);
+        background: var(--hero-panel);
       }
 
       .hero-btn:active {
@@ -375,28 +385,29 @@
 
       .hero-btn-primary {
         background: linear-gradient(90deg, var(--hero-accent), #ff9860);
-        color: #081018;
+        color: #ffffff;
         box-shadow: 0 12px 36px rgba(210, 122, 53, 0.25),
-          0 4px 12px rgba(0, 0, 0, 0.6);
+          0 4px 12px rgba(0, 0, 0, 0.3);
+        border: none;
       }
 
       .hero-btn-primary:hover {
         transform: translateY(-4px);
         box-shadow: 0 16px 40px rgba(210, 122, 53, 0.35),
-          0 6px 16px rgba(0, 0, 0, 0.7);
+          0 6px 16px rgba(0, 0, 0, 0.4);
       }
 
       .hero-btn-ghost {
         background: transparent;
         color: var(--hero-muted);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.2);
       }
 
       .hero-btn-ghost:hover {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(var(--hero-accent), 0.05);
         color: var(--hero-text);
         transform: translateY(-4px);
-        border-color: rgba(255, 255, 255, 0.15);
+        border-color: rgba(var(--hero-accent), 0.3);
       }
 
       .hero-availability {
@@ -406,7 +417,7 @@
         padding: 12px 20px;
         border-radius: 12px;
         background: var(--hero-glass);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         font-size: 14px;
         display: inline-flex;
         align-items: center;
@@ -440,7 +451,7 @@
         flex-wrap: wrap;
         margin-top: 30px;
         padding-top: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-top: 1px solid rgba(var(--hero-accent), 0.1);
       }
 
       .tech-label {
@@ -459,7 +470,7 @@
       .tech-icon {
         width: 44px;
         height: 44px;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(var(--hero-accent), 0.05);
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -467,12 +478,12 @@
         font-size: 1.3rem;
         color: var(--hero-accent-2);
         transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
       }
 
       .tech-icon:hover {
         background: rgba(31, 182, 255, 0.1);
-        color: white;
+        color: var(--hero-accent-2);
         transform: translateY(-3px) scale(1.1);
         border-color: rgba(31, 182, 255, 0.3);
       }
@@ -520,10 +531,9 @@
           rgba(255, 255, 255, 0.01)
         );
         border-radius: 22px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         padding: 28px;
-        box-shadow: 0 30px 60px rgba(4, 8, 18, 0.7),
-          inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(255, 255, 255, 0.03),
           0 0 0 1px rgba(255, 255, 255, 0.02);
         transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
         transition: all 0.5s cubic-bezier(0.2, 0.9, 0.2, 1);
@@ -541,7 +551,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.1),
+          rgba(var(--hero-accent), 0.1),
           transparent
         );
       }
@@ -549,7 +559,7 @@
       .hero-mockup:hover {
         transform: perspective(1200px) rotateY(-1deg) rotateX(0deg)
           translateY(-12px);
-        box-shadow: 0 40px 80px rgba(4, 8, 18, 0.8),
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15),
           inset 0 1px 0 rgba(255, 255, 255, 0.05),
           0 0 0 1px rgba(255, 255, 255, 0.03);
       }
@@ -617,7 +627,7 @@
         flex-direction: column;
         gap: 16px;
         justify-content: space-between;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
       }
 
       @media (max-width: 480px) {
@@ -643,7 +653,7 @@
         font-size: 22px;
         margin-bottom: 8px;
         overflow: hidden;
-        border: 2px solid rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(var(--hero-accent), 0.1);
       }
 
       .mockup-avatar img {
@@ -673,18 +683,18 @@
       }
 
       .mockup-skill {
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(var(--hero-accent), 0.03);
         padding: 10px 12px;
         border-radius: 10px;
         font-size: 13px;
-        color: #dbeffd;
+        color: var(--hero-text);
         text-align: center;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         transition: all 0.3s ease;
       }
 
       .mockup-skill:hover {
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(var(--hero-accent), 0.06);
         transform: translateY(-2px);
       }
 
@@ -711,17 +721,17 @@
         border-radius: 12px;
         background: linear-gradient(
           180deg,
-          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.1),
           rgba(255, 255, 255, 0.02)
         );
         font-family: ui-monospace, "Cairo Mono", SFMono-Regular, Menlo, Monaco,
           "Roboto Mono", monospace;
         font-size: 13.5px;
-        color: #bcdcf6;
+        color: var(--hero-text);
         line-height: 1.6;
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
         position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         overflow: hidden;
       }
 
@@ -740,7 +750,7 @@
         height: 30px;
         background: linear-gradient(
           to bottom,
-          rgba(11, 15, 18, 0.8),
+          rgba(11, 15, 18, 0.1),
           transparent
         );
         z-index: 1;
@@ -758,19 +768,19 @@
       }
 
       .kw {
-        color: #ffd2a8;
+        color: #d27a35; /* Using primary color for keywords */
       }
       .fn {
-        color: #9be7a8;
+        color: #1fb6ff; /* Using secondary color for functions */
       }
       .str {
-        color: #ffa6c9;
+        color: #10b981; /* Green for strings */
       }
       .num {
         color: #9ad1ff;
       }
       .comment {
-        color: #5a6872;
+        color: var(--hero-muted);
         font-style: italic;
       }
 
@@ -948,21 +958,20 @@
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(11, 15, 18, 0.8);
+        background: rgba(var(--hero-accent), 0.1);
         backdrop-filter: blur(10px);
         border-radius: var(--radius-xl);
         padding: 10px 15px;
         display: flex;
         gap: 20px;
         z-index: 1000;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        max-width: 90vw; /* لا يتعدى 90% من عرض الشاشة */
-        overflow-x: auto; /* إذا كان المحتوى كثيرًا */
-        white-space: nowrap; /* لمنع التفاف العناصر */
+        border: 1px solid rgba(var(--hero-accent), 0.2);
+        max-width: 90vw;
+        overflow-x: auto;
+        white-space: nowrap;
       }
 
       body[dir="rtl"] .navbar {
-        /* نفس الخصائص - لا حاجة لتعديلات إضافية */
         left: 50%;
         transform: translateX(-50%);
       }
@@ -988,7 +997,7 @@
 
       .nav-link:hover {
         color: var(--primary);
-        background: rgba(210, 122, 53, 0.1); /* Updated with hero accent */
+        background: rgba(210, 122, 53, 0.1);
       }
 
       .nav-link.active {
@@ -1009,7 +1018,7 @@
         opacity: 0;
         visibility: hidden;
         transition: var(--transition);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
       }
 
       body[dir="rtl"] .nav-tooltip {
@@ -1027,26 +1036,9 @@
         transform: translateX(5px);
       }
 
-      /* About Section - Animations Added */
+      /* About Section */
       .about-content {
         margin-bottom: 60px;
-        animation: fadeInUpSection 0.8s ease-out;
-      }
-
-      @keyframes fadeInUpSection {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @media (max-width: 992px) {
-        .about-content {
-        }
       }
 
       .about-text p {
@@ -1054,56 +1046,19 @@
         line-height: 1.8;
         color: var(--gray-light);
         margin-bottom: 25px;
-        animation: fadeInText 1s ease-out;
-      }
-
-      @keyframes fadeInText {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
 
       .skills-grid {
         display: grid;
         gap: 25px;
-        animation: fadeInGrid 1.2s ease-out;
-      }
-
-      @keyframes fadeInGrid {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .skill-item {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         padding: 25px;
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        animation: slideInSkill 0.6s ease-out;
-        transform-origin: left;
-      }
-
-      @keyframes slideInSkill {
-        from {
-          opacity: 0;
-          transform: translateX(-30px) scale(0.95);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0) scale(1);
-        }
       }
 
       .skill-item:hover {
@@ -1117,18 +1072,6 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
-        animation: fadeInHeader 0.8s ease-out;
-      }
-
-      @keyframes fadeInHeader {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .skill-name {
@@ -1143,53 +1086,18 @@
         position: absolute;
         left: 0;
         color: var(--primary);
-        animation: bounceIn 0.5s ease-out;
-      }
-
-      @keyframes bounceIn {
-        0% {
-          transform: scale(0);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-        100% {
-          transform: scale(1);
-        }
       }
 
       .skill-percentage {
         color: var(--primary);
         font-weight: 700;
-        animation: countUp 1.5s ease-out;
-      }
-
-      @keyframes countUp {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .skill-bar {
         height: 8px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(var(--hero-accent), 0.1);
         border-radius: 4px;
         overflow: hidden;
-        animation: growBar 0.5s ease-out;
-      }
-
-      @keyframes growBar {
-        from {
-          width: 0;
-        }
-        to {
-          width: 100%;
-        }
       }
 
       .skill-progress {
@@ -1231,21 +1139,9 @@
       .tech-icons-section {
         margin-top: 60px;
         padding: 40px 0;
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         border-radius: var(--radius-xl);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        animation: fadeInTech 1s ease-out;
-      }
-
-      @keyframes fadeInTech {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        border: 1px solid rgba(var(--hero-accent), 0.1);
       }
 
       .tech-section-title {
@@ -1253,17 +1149,6 @@
         font-size: 2rem;
         margin-bottom: 40px;
         color: var(--light);
-        animation: titlePulse 2s ease-in-out infinite;
-      }
-
-      @keyframes titlePulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.02);
-        }
       }
 
       .tech-section-title span {
@@ -1281,26 +1166,11 @@
       }
 
       .tech-category {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         padding: 30px;
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        animation: bounceInCategory 0.8s ease-out;
-      }
-
-      @keyframes bounceInCategory {
-        0% {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
       }
 
       .tech-category:hover {
@@ -1316,33 +1186,6 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        animation: slideInTitle 0.6s ease-out;
-      }
-
-      @keyframes slideInTitle {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .category-title i {
-        color: var(--secondary);
-        animation: rotateIcon 2s ease-in-out infinite;
-      }
-
-      @keyframes rotateIcon {
-        0%,
-        100% {
-          transform: rotate(0deg);
-        }
-        50% {
-          transform: rotate(20deg);
-        }
       }
 
       .tech-icons-grid {
@@ -1357,25 +1200,9 @@
         align-items: center;
         gap: 10px;
         padding: 15px;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(var(--hero-accent), 0.03);
         border-radius: var(--radius);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        animation: popInIcon 0.5s ease-out;
-        animation-fill-mode: both;
-      }
-
-      @keyframes popInIcon {
-        0% {
-          opacity: 0;
-          transform: scale(0);
-        }
-        70% {
-          transform: scale(1.1);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
       }
 
       .tech-icon-item:hover {
@@ -1407,23 +1234,11 @@
         font-weight: 600;
       }
 
-      /* Services - Animations Added */
+      /* Services */
       .services-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
-        animation: slideInServices 0.8s ease-out;
-      }
-
-      @keyframes slideInServices {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       @media (max-width: 992px) {
@@ -1439,41 +1254,18 @@
       }
 
       .service-card {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         padding: 40px 30px;
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         text-align: center;
-        animation: floatCard 3s ease-in-out infinite;
-        animation-delay: calc(var(--card-index) * 0.2s);
-      }
-
-      @keyframes floatCard {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      .service-card:nth-child(1) {
-        --card-index: 0;
-      }
-      .service-card:nth-child(2) {
-        --card-index: 1;
-      }
-      .service-card:nth-child(3) {
-        --card-index: 2;
       }
 
       .service-card:hover {
         border-color: var(--primary);
         transform: translateY(-15px) scale(1.05);
         box-shadow: var(--shadow-xl);
-        animation: none;
       }
 
       .service-icon {
@@ -1488,40 +1280,10 @@
         font-size: 2rem;
         color: white;
         transition: all 0.4s ease;
-        animation: rotateIconPulse 4s linear infinite;
-      }
-
-      @keyframes rotateIconPulse {
-        0% {
-          transform: rotate(0deg) scale(1);
-        }
-        25% {
-          transform: rotate(90deg) scale(1.05);
-        }
-        50% {
-          transform: rotate(180deg) scale(1);
-        }
-        75% {
-          transform: rotate(270deg) scale(1.05);
-        }
-        100% {
-          transform: rotate(360deg) scale(1);
-        }
       }
 
       .service-card:hover .service-icon {
-        animation: bounceIcon 0.6s ease;
         background: var(--gradient-secondary);
-      }
-
-      @keyframes bounceIcon {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
       }
 
       .service-title {
@@ -1533,7 +1295,6 @@
 
       .service-card:hover .service-title {
         color: var(--primary);
-        transform: translateX(5px);
       }
 
       .service-description {
@@ -1546,24 +1307,12 @@
         color: var(--light);
       }
 
-      /* Experience - Animations Added */
+      /* Experience */
       .experience-timeline {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 60px;
         position: relative;
-        animation: fadeInTimeline 1s ease-out;
-      }
-
-      @keyframes fadeInTimeline {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       @media (max-width: 992px) {
@@ -1573,70 +1322,14 @@
         }
       }
 
-      .experience-timeline:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 100%;
-        background: var(--gradient-primary);
-        opacity: 0.3;
-        animation: drawLine 1.5s ease-out;
-      }
-
-      @keyframes drawLine {
-        from {
-          height: 0;
-        }
-        to {
-          height: 100%;
-        }
-      }
-
-      @media (max-width: 992px) {
-        .experience-timeline:before {
-          display: none;
-        }
-      }
-
       .timeline-item {
         position: relative;
         padding: 30px;
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         margin-bottom: 30px;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        animation: slideInTimelineItem 0.8s ease-out;
-        animation-fill-mode: both;
-      }
-
-      @keyframes slideInTimelineItem {
-        from {
-          opacity: 0;
-          transform: translateX(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .timeline-item:nth-child(even) {
-        animation-name: slideInTimelineItemRight;
-      }
-
-      @keyframes slideInTimelineItemRight {
-        from {
-          opacity: 0;
-          transform: translateX(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
 
       .timeline-item:hover {
@@ -1657,54 +1350,6 @@
         border-radius: var(--radius);
         font-size: 0.9rem;
         margin-bottom: 15px;
-        animation: pulseDate 2s infinite;
-      }
-
-      @keyframes pulseDate {
-        0%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(210, 122, 53, 0.4);
-        }
-        50% {
-          box-shadow: 0 0 0 10px rgba(210, 122, 53, 0);
-        }
-      }
-
-      .timeline-icon {
-        position: absolute;
-        top: 30px;
-        right: -60px;
-        width: 40px;
-        height: 40px;
-        background: var(--dark);
-        border: 2px solid var(--primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary);
-        animation: bounceTimelineIcon 2s infinite;
-      }
-
-      @keyframes bounceTimelineIcon {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      body[dir="rtl"] .timeline-icon {
-        right: auto;
-        left: -60px;
-      }
-
-      @media (max-width: 992px) {
-        .timeline-icon {
-          display: none;
-        }
       }
 
       .timeline-title {
@@ -1716,7 +1361,6 @@
 
       .timeline-item:hover .timeline-title {
         color: var(--primary);
-        transform: translateX(5px);
       }
 
       body[dir="rtl"] .timeline-item:hover .timeline-title {
@@ -1727,11 +1371,6 @@
         color: var(--primary);
         font-weight: 600;
         margin-bottom: 15px;
-        transition: all 0.3s ease;
-      }
-
-      .timeline-item:hover .timeline-subtitle {
-        transform: translateX(3px);
       }
 
       .timeline-description {
@@ -1744,18 +1383,14 @@
         color: var(--light);
       }
 
-      /* Projects Section Modern Design - NO ANIMATIONS ADDED (as requested) */
+      /* Projects Section Modern Design */
       .collection-heading {
         font-size: 3.5rem;
         font-weight: 800;
         margin-bottom: 2rem;
         position: relative;
         z-index: 2;
-        background: linear-gradient(
-          135deg,
-          #fff 0%,
-          #ff9860 100%
-        ); /* Updated with hero accent */
+        background: linear-gradient(135deg, #fff 0%, #ff9860 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -1766,13 +1401,13 @@
       }
 
       .project-collection {
-        background: rgba(255, 255, 255, 0.02);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        background: rgba(var(--hero-accent), 0.02);
+        box-shadow: var(--shadow-xl);
         margin: 6rem 0;
         padding: 3rem 2rem;
         position: relative;
         border-radius: var(--radius-xl);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         backdrop-filter: blur(20px);
         min-height: 600px;
         overflow: hidden;
@@ -1799,7 +1434,7 @@
 
       .project-card-slider::-webkit-scrollbar {
         height: 8px;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(var(--hero-accent), 0.05);
         border-radius: var(--radius);
       }
 
@@ -1835,8 +1470,8 @@
       .nav-btn {
         width: 3.5rem;
         height: 3.5rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(var(--hero-accent), 0.05);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1857,10 +1492,10 @@
       .featured-project-card {
         min-width: 380px;
         min-height: 500px;
-        box-shadow: -2rem 0 3rem -2rem rgba(0, 0, 0, 0.3);
+        box-shadow: var(--shadow-lg);
         padding: 2.5rem;
         border-radius: var(--radius-xl);
-        background: linear-gradient(145deg, #1e293b, #0f172a);
+        background: linear-gradient(145deg, var(--darker), var(--dark));
         color: var(--light);
         display: flex;
         flex-direction: column;
@@ -1868,13 +1503,8 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         backdrop-filter: blur(5px);
-      }
-
-      [data-theme="light"] .featured-project-card {
-        background: linear-gradient(145deg, #ffffff, #f1f5f9);
-        color: #1e293b;
       }
 
       @media (max-width: 768px) {
@@ -1891,36 +1521,6 @@
           min-height: 400px;
           padding: 1.5rem;
         }
-      }
-
-      .featured-project-card:not(:first-child) {
-        margin-left: -180px;
-        box-shadow: -3rem 0 3rem -2rem rgba(0, 0, 0, 0.4);
-      }
-
-      body[dir="rtl"] .featured-project-card:not(:first-child) {
-        margin-left: 0;
-        margin-right: -180px;
-        box-shadow: 3rem 0 3rem -2rem rgba(0, 0, 0, 0.4);
-      }
-
-      .featured-project-card:hover {
-        transform: translateY(-1.5rem) rotate(-2deg);
-        box-shadow: -1rem 0 3rem -1rem rgba(210, 122, 53, 0.5); /* Updated with hero accent */
-        z-index: 5;
-      }
-
-      body[dir="rtl"] .featured-project-card:hover {
-        transform: translateY(-1.5rem) rotate(2deg);
-        box-shadow: 1rem 0 3rem -1rem rgba(210, 122, 53, 0.5); /* Updated with hero accent */
-      }
-
-      .featured-project-card:hover ~ .featured-project-card {
-        transform: translateX(180px);
-      }
-
-      body[dir="rtl"] .featured-project-card:hover ~ .featured-project-card {
-        transform: translateX(-180px);
       }
 
       .project-status {
@@ -1962,12 +1562,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-      }
-
-      [data-theme="light"] .featured-project-title {
-        background: linear-gradient(135deg, #1e293b 0%, var(--primary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
       }
 
       .project-image-container {
@@ -2012,10 +1606,6 @@
         flex: 1;
       }
 
-      [data-theme="light"] .featured-project-description {
-        color: #64748b;
-      }
-
       .project-tech-tags {
         display: flex;
         flex-wrap: wrap;
@@ -2024,18 +1614,18 @@
       }
 
       .project-tech-tag {
-        background: rgba(210, 122, 53, 0.1); /* Updated with hero accent */
+        background: rgba(210, 122, 53, 0.1);
         color: var(--primary);
         padding: 0.4rem 1rem;
         border-radius: var(--radius);
         font-size: 0.875rem;
         font-weight: 500;
-        border: 1px solid rgba(210, 122, 53, 0.2); /* Updated with hero accent */
+        border: 1px solid rgba(210, 122, 53, 0.2);
         transition: var(--transition);
       }
 
       .project-tech-tag:hover {
-        background: rgba(210, 122, 53, 0.2); /* Updated with hero accent */
+        background: rgba(210, 122, 53, 0.2);
         transform: translateY(-2px);
       }
 
@@ -2067,23 +1657,11 @@
         text-align: center;
       }
 
-      /* Certifications - Animations Added */
+      /* Certifications */
       .certifications-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
-        animation: fadeInCertifications 0.8s ease-out;
-      }
-
-      @keyframes fadeInCertifications {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       @media (max-width: 992px) {
@@ -2099,46 +1677,22 @@
       }
 
       .certification-card {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         padding: 40px 30px;
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         text-align: center;
-        animation: flipInCard 0.8s ease-out;
-        animation-fill-mode: both;
-        transform-style: preserve-3d;
-      }
-
-      @keyframes flipInCard {
-        from {
-          opacity: 0;
-          transform: rotateY(-90deg);
-        }
-        to {
-          opacity: 1;
-          transform: rotateY(0);
-        }
-      }
-
-      .certification-card:nth-child(1) {
-        animation-delay: 0.2s;
-      }
-      .certification-card:nth-child(2) {
-        animation-delay: 0.4s;
-      }
-      .certification-card:nth-child(3) {
-        animation-delay: 0.6s;
       }
 
       .certification-card:hover {
         border-color: var(--primary);
-        transform: translateY(-15px) rotateY(10deg);
+        transform: translateY(-15px);
         box-shadow: var(--shadow-xl);
       }
 
       body[dir="rtl"] .certification-card:hover {
-        transform: translateY(-15px) rotateY(-10deg);
+        transform: translateY(-15px);
       }
 
       .certification-icon {
@@ -2153,37 +1707,10 @@
         font-size: 1.8rem;
         color: white;
         transition: all 0.4s ease;
-        animation: floatIcon 3s ease-in-out infinite;
-      }
-
-      @keyframes floatIcon {
-        0%,
-        100% {
-          transform: translateY(0) rotate(0deg);
-        }
-        33% {
-          transform: translateY(-10px) rotate(120deg);
-        }
-        66% {
-          transform: translateY(5px) rotate(240deg);
-        }
       }
 
       .certification-card:hover .certification-icon {
-        animation: spinIcon 0.6s ease;
         background: var(--gradient-secondary);
-      }
-
-      @keyframes spinIcon {
-        0% {
-          transform: rotate(0deg) scale(1);
-        }
-        50% {
-          transform: rotate(180deg) scale(1.2);
-        }
-        100% {
-          transform: rotate(360deg) scale(1);
-        }
       }
 
       .certification-title {
@@ -2195,22 +1722,12 @@
 
       .certification-card:hover .certification-title {
         color: var(--primary);
-        transform: translateY(-3px);
       }
 
       .certification-issuer {
         color: var(--primary);
         font-weight: 600;
         margin-bottom: 15px;
-        transition: all 0.3s ease;
-      }
-
-      .certification-card:hover .certification-issuer {
-        transform: translateX(5px);
-      }
-
-      body[dir="rtl"] .certification-card:hover .certification-issuer {
-        transform: translateX(-5px);
       }
 
       .certification-description {
@@ -2223,43 +1740,19 @@
         color: var(--light);
       }
 
-      /* Testimonials - Animations Added */
+      /* Testimonials */
       .testimonials-slider {
         max-width: 800px;
         margin: 0 auto;
-        animation: fadeInTestimonials 1s ease-out;
-      }
-
-      @keyframes fadeInTestimonials {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .testimonial-card {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         padding: 40px;
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         margin: 20px;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        animation: slideInTestimonial 0.8s ease-out;
-      }
-
-      @keyframes slideInTestimonial {
-        from {
-          opacity: 0;
-          transform: translateX(-30px) scale(0.95);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0) scale(1);
-        }
       }
 
       @media (max-width: 768px) {
@@ -2280,7 +1773,6 @@
         align-items: center;
         gap: 20px;
         margin-bottom: 25px;
-        animation: fadeInHeader 0.8s ease-out;
       }
 
       .testimonial-avatar {
@@ -2290,17 +1782,6 @@
         overflow: hidden;
         border: 3px solid var(--primary);
         transition: all 0.4s ease;
-        animation: pulseAvatar 2s infinite;
-      }
-
-      @keyframes pulseAvatar {
-        0%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(210, 122, 53, 0.4);
-        }
-        50% {
-          box-shadow: 0 0 0 10px rgba(210, 122, 53, 0);
-        }
       }
 
       .testimonial-card:hover .testimonial-avatar {
@@ -2328,7 +1809,6 @@
 
       .testimonial-card:hover .testimonial-info h4 {
         color: var(--primary);
-        transform: translateX(5px);
       }
 
       .testimonial-info p {
@@ -2380,42 +1860,18 @@
 
       .testimonial-card:hover .testimonial-text::before {
         opacity: 0.7;
-        transform: scale(1.2);
       }
 
       .testimonial-rating {
         color: #ffc107;
         font-size: 1.1rem;
-        animation: twinkleStars 2s infinite;
       }
 
-      @keyframes twinkleStars {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.7;
-        }
-      }
-
-      /* Process - Animations Added */
+      /* Process */
       .process-steps {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
-        animation: fadeInProcess 0.8s ease-out;
-      }
-
-      @keyframes fadeInProcess {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       @media (max-width: 992px) {
@@ -2433,37 +1889,11 @@
       .process-step {
         text-align: center;
         padding: 40px 30px;
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
-        animation: bounceInStep 0.8s ease-out;
-        animation-fill-mode: both;
-      }
-
-      @keyframes bounceInStep {
-        0% {
-          opacity: 0;
-          transform: scale(0.3);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .process-step:nth-child(1) {
-        animation-delay: 0.2s;
-      }
-      .process-step:nth-child(2) {
-        animation-delay: 0.4s;
-      }
-      .process-step:nth-child(3) {
-        animation-delay: 0.6s;
       }
 
       .process-step:hover {
@@ -2483,17 +1913,6 @@
         position: absolute;
         top: 20px;
         left: 20px;
-        animation: floatNumber 3s ease-in-out infinite;
-      }
-
-      @keyframes floatNumber {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
       }
 
       body[dir="rtl"] .step-number {
@@ -2503,7 +1922,6 @@
 
       .process-step:hover .step-number {
         opacity: 0.5;
-        transform: scale(1.1);
       }
 
       .step-title {
@@ -2515,7 +1933,6 @@
 
       .process-step:hover .step-title {
         color: var(--primary);
-        transform: translateY(-5px);
       }
 
       .step-description {
@@ -2528,24 +1945,12 @@
         color: var(--light);
       }
 
-      /* Contact - Animations Added */
+      /* Contact */
       .contact-content {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 60px;
         align-items: center;
-        animation: fadeInContact 0.8s ease-out;
-      }
-
-      @keyframes fadeInContact {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       @media (max-width: 992px) {
@@ -2556,33 +1961,6 @@
 
       .contact-photo-container {
         text-align: center;
-        animation: slideInPhoto 1s ease-out;
-      }
-
-      @keyframes slideInPhoto {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      body[dir="rtl"] .contact-photo-container {
-        animation-name: slideInPhotoRtl;
-      }
-
-      @keyframes slideInPhotoRtl {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
 
       .contact-photo {
@@ -2596,20 +1974,6 @@
           border-box;
         box-shadow: var(--shadow-xl);
         position: relative;
-        animation: floatPhoto 4s ease-in-out infinite;
-      }
-
-      @keyframes floatPhoto {
-        0%,
-        100% {
-          transform: translateY(0) rotate(0deg);
-        }
-        33% {
-          transform: translateY(-20px) rotate(5deg);
-        }
-        66% {
-          transform: translateY(10px) rotate(-5deg);
-        }
       }
 
       .contact-photo img {
@@ -2630,33 +1994,6 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
-        animation: slideInInfo 1s ease-out;
-      }
-
-      @keyframes slideInInfo {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      body[dir="rtl"] .contact-info-grid {
-        animation-name: slideInInfoRtl;
-      }
-
-      @keyframes slideInInfoRtl {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
 
       @media (max-width: 768px) {
@@ -2668,39 +2005,10 @@
       .contact-card {
         text-align: center;
         padding: 40px 30px;
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(var(--hero-accent), 0.02);
         border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(var(--hero-accent), 0.1);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        animation: popInContact 0.6s ease-out;
-        animation-fill-mode: both;
-      }
-
-      @keyframes popInContact {
-        0% {
-          opacity: 0;
-          transform: scale(0);
-        }
-        70% {
-          transform: scale(1.1);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .contact-card:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .contact-card:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .contact-card:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .contact-card:nth-child(4) {
-        animation-delay: 0.4s;
       }
 
       .contact-card:hover {
@@ -2721,34 +2029,10 @@
         font-size: 1.8rem;
         color: white;
         transition: all 0.4s ease;
-        animation: bounceContactIcon 2s infinite;
-      }
-
-      @keyframes bounceContactIcon {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
       }
 
       .contact-card:hover .contact-icon {
-        animation: spinContactIcon 0.6s ease;
         background: var(--gradient-secondary);
-      }
-
-      @keyframes spinContactIcon {
-        0% {
-          transform: rotate(0deg) scale(1);
-        }
-        50% {
-          transform: rotate(180deg) scale(1.2);
-        }
-        100% {
-          transform: rotate(360deg) scale(1);
-        }
       }
 
       .contact-title {
@@ -2760,7 +2044,6 @@
 
       .contact-card:hover .contact-title {
         color: var(--primary);
-        transform: translateY(-3px);
       }
 
       .contact-detail {
@@ -2771,26 +2054,13 @@
 
       .contact-card:hover .contact-detail {
         color: var(--light);
-        transform: translateY(-2px);
       }
 
-      /* Footer - Animations Added */
+      /* Footer */
       footer {
-        background: rgba(255, 255, 255, 0.02);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(var(--hero-accent), 0.02);
+        border-top: 1px solid rgba(var(--hero-accent), 0.1);
         padding: 80px 0 30px;
-        animation: fadeInFooter 0.8s ease-out;
-      }
-
-      @keyframes fadeInFooter {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .footer-content {
@@ -2798,18 +2068,6 @@
         grid-template-columns: 1fr 2fr;
         gap: 60px;
         margin-bottom: 60px;
-        animation: slideInFooterContent 1s ease-out;
-      }
-
-      @keyframes slideInFooterContent {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       @media (max-width: 992px) {
@@ -2827,17 +2085,6 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin-bottom: 20px;
-        animation: logoPulse 3s infinite;
-      }
-
-      @keyframes logoPulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
       }
 
       .footer-description {
@@ -2845,66 +2092,24 @@
         line-height: 1.8;
         margin-bottom: 30px;
         max-width: 400px;
-        animation: fadeInText 1s ease-out 0.2s both;
       }
 
       .footer-social {
         display: flex;
         gap: 15px;
-        animation: fadeInSocial 1s ease-out 0.4s both;
-      }
-
-      @keyframes fadeInSocial {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .social-link-footer {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(var(--hero-accent), 0.05);
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--gray);
         text-decoration: none;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        animation: popInSocial 0.5s ease-out;
-        animation-fill-mode: both;
-      }
-
-      @keyframes popInSocial {
-        0% {
-          opacity: 0;
-          transform: scale(0);
-        }
-        70% {
-          transform: scale(1.1);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .social-link-footer:nth-child(1) {
-        animation-delay: 0.5s;
-      }
-      .social-link-footer:nth-child(2) {
-        animation-delay: 0.6s;
-      }
-      .social-link-footer:nth-child(3) {
-        animation-delay: 0.7s;
-      }
-      .social-link-footer:nth-child(4) {
-        animation-delay: 0.8s;
       }
 
       .social-link-footer:hover {
@@ -2918,33 +2123,6 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
-        animation: slideInFooterLinks 1s ease-out 0.6s both;
-      }
-
-      @keyframes slideInFooterLinks {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      body[dir="rtl"] .footer-links {
-        animation-name: slideInFooterLinksRtl;
-      }
-
-      @keyframes slideInFooterLinksRtl {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
 
       @media (max-width: 768px) {
@@ -2957,18 +2135,6 @@
         font-size: 1.3rem;
         margin-bottom: 25px;
         color: var(--light);
-        animation: fadeInFooterTitle 0.8s ease-out;
-      }
-
-      @keyframes fadeInFooterTitle {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .footer-section ul {
@@ -2977,47 +2143,6 @@
 
       .footer-section ul li {
         margin-bottom: 15px;
-        animation: fadeInFooterItem 0.8s ease-out;
-        animation-fill-mode: both;
-      }
-
-      @keyframes fadeInFooterItem {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .footer-section ul li:nth-child(1) {
-        animation-delay: 0.7s;
-      }
-      .footer-section ul li:nth-child(2) {
-        animation-delay: 0.8s;
-      }
-      .footer-section ul li:nth-child(3) {
-        animation-delay: 0.9s;
-      }
-      .footer-section ul li:nth-child(4) {
-        animation-delay: 1s;
-      }
-
-      body[dir="rtl"] .footer-section ul li {
-        animation-name: fadeInFooterItemRtl;
-      }
-
-      @keyframes fadeInFooterItemRtl {
-        from {
-          opacity: 0;
-          transform: translateX(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
 
       .footer-section ul li a {
@@ -3030,47 +2155,22 @@
       .footer-section ul li a:hover {
         color: var(--primary);
         padding-left: 10px;
-        transform: translateX(5px);
       }
 
       body[dir="rtl"] .footer-section ul li a:hover {
         padding-left: 0;
         padding-right: 10px;
-        transform: translateX(-5px);
       }
 
       .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(var(--hero-accent), 0.1);
         padding-top: 30px;
         text-align: center;
         color: var(--gray);
-        animation: fadeInFooterBottom 1s ease-out 1.2s both;
-      }
-
-      @keyframes fadeInFooterBottom {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .footer-bottom p {
         margin-bottom: 10px;
-        animation: textGlow 3s infinite;
-      }
-
-      @keyframes textGlow {
-        0%,
-        100% {
-          text-shadow: 0 0 5px rgba(210, 122, 53, 0.3);
-        }
-        50% {
-          text-shadow: 0 0 15px rgba(210, 122, 53, 0.6);
-        }
       }
 
       /* Responsive Design */
@@ -3079,11 +2179,12 @@
           bottom: 15px;
           padding: 8px 12px;
           gap: 15px;
-          max-width: 95vw; /* شغل مساحة أكبر في الموبايل */
+          max-width: 95vw;
         }
 
         body[dir="rtl"] .navbar {
-          left: 20px;
+          left: 50%;
+          transform: translateX(-50%);
         }
 
         .controls-container {
@@ -3333,11 +2434,11 @@
           <div class="hero-cta-group">
             <a href="#projects" class="hero-btn hero-btn-primary">
               <i class="fas fa-eye"></i>
-              View Portfolio
+              <span class="btn-text">View Portfolio</span>
             </a>
             <a href="#contact" class="hero-btn hero-btn-ghost">
               <i class="fas fa-paper-plane"></i>
-              Send Message
+              <span class="btn-text">Send Message</span>
             </a>
           </div>
         </div>
@@ -3357,7 +2458,6 @@
               <div class="mockup-left-panel">
                 <div style="display: flex; gap: 12px; align-items: center">
                   <div class="mockup-avatar">
-                    <!-- Replace with your image -->
                     <img
                       src="images/Ahmad Salloum.jpeg"
                       alt="Ahmad Salloum"
@@ -3436,20 +2536,20 @@
         <div class="about-content">
           <div data-aos="fade-right">
             <div class="about-text">
-              <p>
+              <p class="about-text-1">
                 I am Ahmad Salloum, a passionate web developer with over 10
                 years of experience in creating digital solutions. I specialize
                 in transforming design concepts into fully functional,
                 responsive websites with high efficiency and professionalism.
               </p>
-              <p>
+              <p class="about-text-2">
                 My expertise includes front-end development with React.js and
                 JavaScript, back-end development with PHP and MySQL, and
                 creating responsive designs that work seamlessly across all
                 devices. I take pride in implementing designs with precision and
                 technical excellence.
               </p>
-              <p>
+              <p class="about-text-3">
                 I believe in clean code, best practices, and creating solutions
                 that not only look great but also perform exceptionally well
                 across all platforms and devices.
@@ -3465,7 +2565,11 @@
           </h3>
 
           <div class="tech-categories">
-            <!-- Frontend Technologies -->
+            <div class="tech-category">
+              <h4 class="category-title">
+                <i class="fas fa-code"></i>
+                <span>Frontend Technologies</span>
+              </h4>
               <div class="tech-icons-grid">
                 <div class="tech-icon-item">
                   <i class="fab fa-html5 tech-icon-large"></i>
@@ -3491,11 +2595,15 @@
                   <i class="fas fa-wind tech-icon-large"></i>
                   <span class="tech-icon-name">Tailwind</span>
                 </div>
+              </div>
+            </div>
 
-                <div class="tech-icon-item">
-                  <i class="fab fa-npm tech-icon-large"></i>
-                  <span class="tech-icon-name">npm</span>
-                </div>
+            <div class="tech-category">
+              <h4 class="category-title">
+                <i class="fas fa-server"></i>
+                <span>Backend & Database</span>
+              </h4>
+              <div class="tech-icons-grid">
                 <div class="tech-icon-item">
                   <i class="fab fa-php tech-icon-large"></i>
                   <span class="tech-icon-name">PHP</span>
@@ -3504,7 +2612,6 @@
                   <i class="fas fa-database tech-icon-large"></i>
                   <span class="tech-icon-name">MySQL</span>
                 </div>
-
                 <div class="tech-icon-item">
                   <i class="fas fa-database tech-icon-large"></i>
                   <span class="tech-icon-name">MongoDB</span>
@@ -3514,13 +2621,22 @@
                   <span class="tech-icon-name">Firebase</span>
                 </div>
                 <div class="tech-icon-item">
+                  <i class="fab fa-node-js tech-icon-large"></i>
+                  <span class="tech-icon-name">Node.js</span>
+                </div>
+                <div class="tech-icon-item">
                   <i class="fas fa-code tech-icon-large"></i>
                   <span class="tech-icon-name">REST API</span>
                 </div>
-                <div class="tech-icon-item">
-                  <i class="fas fa-shield-alt tech-icon-large"></i>
-                  <span class="tech-icon-name">Security</span>
-                </div>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h4 class="category-title">
+                <i class="fas fa-tools"></i>
+                <span>Tools & Others</span>
+              </h4>
+              <div class="tech-icons-grid">
                 <div class="tech-icon-item">
                   <i class="fab fa-git-alt tech-icon-large"></i>
                   <span class="tech-icon-name">Git</span>
@@ -3545,17 +2661,7 @@
                   <i class="fas fa-bolt tech-icon-large"></i>
                   <span class="tech-icon-name">Performance</span>
                 </div>
-                <div class="tech-icon-item">
-                  <i class="fas fa-search tech-icon-large"></i>
-                  <span class="tech-icon-name">SEO</span>
-                </div>
-                <div class="tech-icon-item">
-                  <i class="fas fa-cloud tech-icon-large"></i>
-                  <span class="tech-icon-name">Hosting</span>
-                </div>
               </div>
-
-              <!-- Tools & Others -->
             </div>
           </div>
         </div>
@@ -4026,7 +3132,7 @@
               </div>
               <div class="testimonial-info">
                 <h4>Mohammed Fadel</h4>
-                <p>CEO, Rukn Alamasy Company</p>
+                <p class="client-position">CEO, Rukn Alamasy Company</p>
               </div>
             </div>
             <p class="testimonial-text">
@@ -4052,7 +3158,7 @@
               </div>
               <div class="testimonial-info">
                 <h4>Issam Al-Ashqar</h4>
-                <p>Clinic Director, Paris 35 Dental</p>
+                <p class="client-position">Clinic Director, Paris 35 Dental</p>
               </div>
             </div>
             <p class="testimonial-text">
@@ -4269,15 +3375,17 @@
           contact: "Contact",
 
           // Hero Section
-          professional_dev: "Professional Web Developer",
-          hero_description:
-            "Professional Web Developer with 10+ years of experience in creating exceptional digital experiences. Specializing in modern web technologies and responsive design.",
-          get_in_touch: "Get In Touch",
-          view_projects: "View Projects",
+          hero_availability: "Available for Full-time/Part-time Work",
+          hero_title:
+            "I'm <span class='name'>Ahmad Salloum</span><br />Crafting powerful interfaces with professional user experience",
+          hero_lead:
+            "I combine solid visual design with precise software engineering. I work on applications and websites that commit to performance, smoothness, and clarity — suitable for companies and products that want confidence and professionalism in their digital interface.",
+          view_projects: "View Portfolio",
+          get_in_touch: "Send Message",
           tech_stack: "Tech Stack",
 
           // About Section
-          about_title: "About Me",
+          about_title: "About <span>Me</span>",
           about_subtitle:
             "Professional Web Developer with extensive experience in modern web technologies",
           about_text1:
@@ -4286,16 +3394,10 @@
             "My expertise includes front-end development with React.js and JavaScript, back-end development with PHP and MySQL, and creating responsive designs that work seamlessly across all devices. I take pride in implementing designs with precision and technical excellence.",
           about_text3:
             "I believe in clean code, best practices, and creating solutions that not only look great but also perform exceptionally well across all platforms and devices.",
-          html_css: "HTML/CSS",
-          javascript: "JavaScript",
-          responsive_design: "Responsive Design",
-          projects_completed: "Projects Completed",
-          satisfied_clients: "Satisfied Clients",
-          years_experience: "Years Experience",
-          on_time_delivery: "On-Time Delivery",
+          technologies_title: "Technologies & Languages",
 
           // Services Section
-          services_title: "My Services",
+          services_title: "My <span>Services</span>",
           services_subtitle:
             "Comprehensive web development services to bring your digital vision to life",
           frontend_development: "Frontend Development",
@@ -4307,31 +3409,12 @@
           react_development: "React JS Development",
           react_description:
             "Creating dynamic single-page applications with React.js, implementing state management, and building reusable component libraries.",
-          full_stack: "Full Stack Solutions",
 
           // Experience Section
-          experience_title: "My Journey",
+          experience_title: "My <span>Journey</span>",
           experience_subtitle: "Education and professional experience timeline",
           education: "Education",
           work_experience: "Work Experience",
-          masters_degree: "Master's in Web Sciences",
-          masters_description:
-            "Currently pursuing a Master's degree in Web Sciences at Syrian Virtual University, focusing on advanced web technologies and development.",
-          bachelors_degree: "Bachelor's Degree in Information Technology",
-          bachelors_description:
-            "Specialized in software development, database management, and web technologies.",
-          diploma: "Diploma in Information Technology",
-          diploma_description:
-            "Focused on foundational programming, system administration, and IT fundamentals.",
-          it_manager: "IT Manager & Design Supervisor",
-          it_manager_description:
-            "Managing IT operations and supervising design implementations for various projects, ensuring high-quality web development standards and team coordination.",
-          freelance: "Freelance Web Developer",
-          freelance_description:
-            "Working with various clients to implement website designs and develop custom web solutions with professional execution and technical excellence.",
-          frontend_engineer: "Front-End Engineer",
-          frontend_engineer_description:
-            "Specialized in creating responsive, interactive user interfaces using modern JavaScript frameworks and CSS for optimal user experience.",
 
           // Projects Section
           featured_projects: "Featured Projects",
@@ -4341,16 +3424,6 @@
           medical: "Medical",
           restaurant: "Restaurant",
           web_application: "Web Application",
-          project1_description:
-            "Complete e-commerce solution for safety equipment distribution in Saudi Arabia with advanced product filtering, secure payments, and inventory management.",
-          project2_description:
-            "Comprehensive healthcare website for a leading dental clinic in Berlin with appointment scheduling, patient portal, and multilingual support system.",
-          project3_description:
-            "Modern e-commerce platform for electronics with advanced search, shopping cart functionality, user accounts, and secure checkout process.",
-          project4_description:
-            "Elegant restaurant website with online reservation system, interactive menu, gallery showcase, and seamless user experience for food enthusiasts.",
-          project5_description:
-            "Advanced project management tool with real-time collaboration, task tracking, team management, and analytics dashboard for business productivity.",
           live_demo: "Live Demo",
           view_all_projects: "View All Projects",
 
@@ -4358,39 +3431,20 @@
           certifications_title: "Certifications & Skills",
           certifications_subtitle:
             "Professional certifications and technical expertise",
-          react_certification: "Advanced React Developer",
-          react_certification_description:
-            "Expert in React Hooks, Context API, Redux, Next.js, React Router, and modern React patterns.",
-          javascript_certification: "Modern JavaScript ES6+",
-          javascript_certification_description:
-            "Advanced JavaScript concepts including Async/Await, Modules, APIs, and Performance Optimization.",
-          database_certification: "Database Management",
-          database_certification_description:
-            "MySQL, MongoDB, Database Design, Optimization, Security, and Performance Tuning.",
 
           // Testimonials Section
           testimonials_title: "Client Testimonials",
           testimonials_subtitle: "What my clients say about working with me",
-          ceo_ruknalamasy: "CEO, Rukn Alamasy Co.",
+          ceo_ruknalamasy: "CEO, Rukn Alamasy Company",
           clinic_director: "Clinic Director, Paris 35 Dental",
-          testimonial1:
-            '"Ahmad delivered our e-commerce platform with exceptional quality and attention to detail. His technical expertise and professional approach made the entire development process smooth and efficient. The website has significantly increased our online sales by 40%."',
-          testimonial2:
-            '"Working with Ahmad was a game-changer for our dental clinic. He created a user-friendly website with an efficient appointment system that reduced our admin work by 60%. His responsiveness and technical support are outstanding."',
 
           // Process Section
           process_title: "Work Process",
           process_subtitle:
             "My systematic approach to delivering successful projects",
           discovery_planning: "Discovery & Planning",
-          discovery_description:
-            "Understanding client requirements, planning project architecture, and creating detailed specifications and timelines.",
           design_development: "Design & Development",
-          design_description:
-            "Creating wireframes, designing user interfaces, and developing the solution with modern technologies and best practices.",
           testing_deployment: "Testing & Deployment",
-          testing_description:
-            "Rigorous quality assurance, performance optimization, and seamless deployment with ongoing support and maintenance.",
 
           // Contact Section
           contact_title: "Contact Me",
@@ -4408,15 +3462,6 @@
           quick_links: "Quick Links",
           all_rights_reserved: "All Rights Reserved.",
           crafting_excellence: "Crafting digital excellence since 2015",
-
-          // Typing Effect Texts
-          typing_texts: [
-            "Full Stack Developer",
-            "Frontend Expert",
-            "Web Development Professional",
-            "React.js Specialist",
-            "UI/UX Enthusiast",
-          ],
         },
 
         ar: {
@@ -4429,15 +3474,17 @@
           contact: "اتصل بي",
 
           // Hero Section
-          professional_dev: "مطور ويب محترف",
-          hero_description:
-            "مطور ويب محترف بخبرة تزيد عن 10 سنوات في إنشاء تجارب رقمية استثنائية. متخصص في تقنيات الويب الحديثة والتصميم المتجاوب.",
-          get_in_touch: "تواصل معي",
+          hero_availability: "متاح للعمل بدوام كامل/جزئي",
+          hero_title:
+            "أنا <span class='name'>أحمد سلوم</span><br />أصمم واجهات قوية بتجربة مستخدم احترافية",
+          hero_lead:
+            "أجمع بين التصميم المرئي المتين والهندسة البرمجية الدقيقة. أعمل على التطبيقات والمواقع الإلكترونية التي تلتزم بالأداء والسلاسة والوضوح - مناسبة للشركات والمنتجات التي تريد الثقة والاحترافية في واجهتها الرقمية.",
           view_projects: "عرض المشاريع",
+          get_in_touch: "إرسال رسالة",
           tech_stack: "التقنيات",
 
           // About Section
-          about_title: "من أنا",
+          about_title: "من <span>أنا</span>",
           about_subtitle: "مطور ويب محترف بخبرة واسعة في تقنيات الويب الحديثة",
           about_text1:
             "أنا أحمد سلوم، مطور ويب شغوف بأكثر من 10 سنوات خبرة في إنشاء الحلول الرقمية. أتخصص في تحويل مفاهيم التصميم إلى مواقع ويب كاملة الوظائف ومتجاوبة بكفاءة عالية واحترافية.",
@@ -4445,16 +3492,10 @@
             "تشمل خبرتي تطوير الواجهات الأمامية باستخدام React.js وJavaScript، وتطوير الخلفية باستخدام PHP وMySQL، وإنشاء تصميمات متجاوبة تعمل بسلاسة على جميع الأجهزة.",
           about_text3:
             "أؤمن بالكود النظيف، والممارسات الفضلى، وخلق حلول لا تبدو رائعة فحسب، بل تؤدي بشكل استثنائي عبر جميع المنصات والأجهزة.",
-          html_css: "HTML/CSS",
-          javascript: "JavaScript",
-          responsive_design: "التصميم المتجاوب",
-          projects_completed: "مشاريع مكتملة",
-          satisfied_clients: "عملاء راضون",
-          years_experience: "سنوات خبرة",
-          on_time_delivery: "التسليم في الوقت المحدد",
+          technologies_title: "التقنيات واللغات",
 
           // Services Section
-          services_title: "خدماتي",
+          services_title: "<span>خدماتي</span>",
           services_subtitle:
             "خدمات تطوير ويب شاملة لتحويل رؤيتك الرقمية إلى حقيقة",
           frontend_development: "تطوير الواجهات الأمامية",
@@ -4466,31 +3507,12 @@
           react_development: "تطوير React.js",
           react_description:
             "إنشاء تطبيقات صفحة واحدة ديناميكية باستخدام React.js، وتنفيذ إدارة الحالة، وبناء مكتبات مكونات قابلة لإعادة الاستخدام.",
-          full_stack: "حلول كاملة",
 
           // Experience Section
-          experience_title: "رحلتي",
+          experience_title: "<span>رحلتي</span>",
           experience_subtitle: "خطة التعليم والخبرة المهنية",
           education: "التعليم",
           work_experience: "الخبرة العملية",
-          masters_degree: "ماجستير في علوم الويب",
-          masters_description:
-            "أتابع حالياً درجة الماجستير في علوم الويب في الجامعة الافتراضية السورية، مع التركيز على تقنيات الويب المتقدمة والتطوير.",
-          bachelors_degree: "بكالوريوس في تكنولوجيا المعلومات",
-          bachelors_description:
-            "تخصصت في تطوير البرمجيات، وإدارة قواعد البيانات، وتقنيات الويب.",
-          diploma: "دبلوم في تكنولوجيا المعلومات",
-          diploma_description:
-            "ركزت على البرمجة الأساسية، وإدارة النظم، وأساسيات تكنولوجيا المعلومات.",
-          it_manager: "مدير تقنية المعلومات ومشرف التصميم",
-          it_manager_description:
-            "إدارة عمليات تقنية المعلومات والإشراف على تنفيذ التصاميم لمشاريع متنوعة، وضمان معايير تطوير ويب عالية الجودة وتنسيق الفريق.",
-          freelance: "مطور ويب مستقل",
-          freelance_description:
-            "العمل مع عملاء متنوعين لتنفيذ تصاميم المواقع وتطوير حلول ويب مخصصة مع تنفيذ احترافي وتميز تقني.",
-          frontend_engineer: "مهندس واجهات أمامية",
-          frontend_engineer_description:
-            "متخصص في إنشاء واجهات مستخدم متجاوبة وتفاعلية باستخدام أطر عمل JavaScript الحديثة وCSS لتجربة مستخدم مثالية.",
 
           // Projects Section
           featured_projects: "المشاريع المميزة",
@@ -4500,54 +3522,25 @@
           medical: "طبي",
           restaurant: "مطعم",
           web_application: "تطبيق ويب",
-          project1_description:
-            "حل تجارة إلكترونية كامل لتوزيع معدات السلامة في المملكة العربية السعودية مع تصفية منتجات متقدمة، دفعات آمنة، وإدارة المخزون.",
-          project2_description:
-            "موقع ويب صحي شامل لعيادة أسنان رائدة في برلين مع نظام حجز المواعيد، بوابة للمرضى، ونظام دعم متعدد اللغات.",
-          project3_description:
-            "منصة تجارة إلكترونية حديثة للإلكترونيات مع بحث متقدم، وظيفة عربة التسوق، حسابات المستخدمين، وعملية دفع آمنة.",
-          project4_description:
-            "موقع مطعم أنيق مع نظام حجز عبر الإنترنت، قائمة تفاعلية، معرض صور، وتجربة مستخدم سلسة لعشاق الطعام.",
-          project5_description:
-            "أداة إدارة مشاريع متقدمة مع تعاون في الوقت الفعلي، تتبع المهام، إدارة الفريق، ولوحة تحليلات لإنتاجية الأعمال.",
           live_demo: "عرض مباشر",
           view_all_projects: "عرض جميع المشاريع",
 
           // Certifications Section
           certifications_title: "الشهادات والمهارات",
           certifications_subtitle: "الشهادات الاحترافية والخبرة التقنية",
-          react_certification: "مطور React متقدم",
-          react_certification_description:
-            "خبير في React Hooks، Context API، Redux، Next.js، React Router، وأنماط React الحديثة.",
-          javascript_certification: "JavaScript ES6+ الحديث",
-          javascript_certification_description:
-            "مفاهيم JavaScript المتقدمة بما في ذلك Async/Await، الوحدات، واجهات برمجة التطبيقات، وتحسين الأداء.",
-          database_certification: "إدارة قواعد البيانات",
-          database_certification_description:
-            "MySQL، MongoDB، تصميم قواعد البيانات، التحسين، الأمان، وضبط الأداء.",
 
           // Testimonials Section
           testimonials_title: "آراء العملاء",
           testimonials_subtitle: "ماذا يقول عملائي عن العمل معي",
           ceo_ruknalamasy: "الرئيس التنفيذي، شركة ركن المعاصي",
           clinic_director: "مدير العيادة، باريس 35 للأسنان",
-          testimonial1:
-            '"قدم أحمد منصتنا للتجارة الإلكترونية بجودة استثنائية واهتمام بالتفاصيل. جعلت خبرته التقنية ومنهجه الاحترافي عملية التطوير بأكملها سلسة وفعالة. زاد الموقع بشكل كبير من مبيعاتنا عبر الإنترنت بنسبة 40%."',
-          testimonial2:
-            '"كان العمل مع أحمد نقطة تحول لعيادتنا للأسنان. أنشأ موقع ويب سهل الاستخدام مع نظام حجز فعال قلل من عملنا الإداري بنسبة 60%. استجابته ودعمه الفني استثنائيان."',
 
           // Process Section
           process_title: "عملية العمل",
           process_subtitle: "منهجي المنهجي في تقديم المشاريع الناجحة",
           discovery_planning: "الاكتشاف والتخطيط",
-          discovery_description:
-            "فهم متطلبات العميل، وتخطيط هندسة المشروع، وإنشاء مواصفات وجداول زمنية مفصلة.",
           design_development: "التصميم والتطوير",
-          design_description:
-            "إنشاء مخططات سلكية، وتصميم واجهات المستخدم، وتطوير الحل باستخدام التقنيات الحديثة وأفضل الممارسات.",
           testing_deployment: "الاختبار والنشر",
-          testing_description:
-            "ضمان الجودة الصارمة، وتحسين الأداء، والنشر السلس مع الدعم والصيانة المستمرة.",
 
           // Contact Section
           contact_title: "اتصل بي",
@@ -4565,15 +3558,6 @@
           quick_links: "روابط سريعة",
           all_rights_reserved: "جميع الحقوق محفوظة.",
           crafting_excellence: "صناعة التميز الرقمي منذ 2015",
-
-          // Typing Effect Texts
-          typing_texts: [
-            "مطور Full Stack",
-            "خبير واجهات أمامية",
-            "مطور ويب محترف",
-            "متخصص React.js",
-            "متحمس للواجهات وتجربة المستخدم",
-          ],
         },
       };
 
@@ -4630,19 +3614,19 @@
           // Create particles
           createParticles();
 
-          // Theme Toggle
+          // Theme Toggle - DEFAULT IS DARK MODE
           const themeToggle = document.getElementById("themeToggle");
           const prefersDarkScheme = window.matchMedia(
             "(prefers-color-scheme: dark)"
           );
-          let currentTheme =
-            localStorage.getItem("theme") ||
-            (prefersDarkScheme.matches ? "dark" : "light");
 
-          if (currentTheme === "light") {
-            document.body.setAttribute("data-theme", "light");
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-          }
+          // Set default theme to DARK (as requested)
+          let currentTheme = "dark";
+          document.body.setAttribute("data-theme", "dark");
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+
+          // Store in localStorage
+          localStorage.setItem("theme", "dark");
 
           themeToggle.addEventListener("click", () => {
             currentTheme =
@@ -4657,9 +3641,13 @@
             localStorage.setItem("theme", currentTheme);
           });
 
-          // Language Toggle - FIXED
+          // Language Toggle - DEFAULT IS ENGLISH
           const languageToggle = document.getElementById("languageToggle");
-          let currentLanguage = localStorage.getItem("language") || "en";
+          let currentLanguage = "en"; // English by default
+
+          // Set initial language
+          updateLanguage(currentLanguage);
+          languageToggle.innerHTML = '<i class="fas fa-language"></i>';
 
           function updateLanguage(lang) {
             // Update HTML direction and language
@@ -4678,106 +3666,146 @@
 
             // Update hero section
             const heroTitle = document.querySelector(".hero-title");
-            if (heroTitle && lang === "ar") {
-              heroTitle.innerHTML =
-                'أنا <span class="name">أحمد سلوم</span><br />أصمم واجهات قوية بتجربة مستخدم احترافية';
-            } else if (heroTitle && lang === "en") {
-              heroTitle.innerHTML =
-                'I\'m <span class="name">Ahmad Salloum</span><br />Crafting powerful interfaces with professional user experience';
+            if (heroTitle && translations[lang].hero_title) {
+              heroTitle.innerHTML = translations[lang].hero_title;
             }
 
             const heroLead = document.querySelector(".hero-lead");
-            if (heroLead && lang === "ar") {
-              heroLead.textContent =
-                "أجمع بين التصميم المرئي المتين والهندسة البرمجية الدقيقة. أعمل على التطبيقات والمواقع الإلكترونية التي تلتزم بالأداء والسلاسة والوضوح - مناسبة للشركات والمنتجات التي تريد الثقة والاحترافية في واجهتها الرقمية.";
-            } else if (heroLead && lang === "en") {
-              heroLead.textContent =
-                "I combine solid visual design with precise software engineering. I work on applications and websites that commit to performance, smoothness, and clarity — suitable for companies and products that want confidence and professionalism in their digital interface.";
+            if (heroLead && translations[lang].hero_lead) {
+              heroLead.textContent = translations[lang].hero_lead;
+            }
+
+            const heroAvailability =
+              document.querySelector(".hero-availability");
+            if (heroAvailability && translations[lang].hero_availability) {
+              heroAvailability.textContent =
+                translations[lang].hero_availability;
             }
 
             // Update buttons
-            const viewPortfolioBtn = document.querySelector(
-              ".hero-btn-primary span, .hero-btn-primary i + span"
-            );
-            const sendMessageBtn = document.querySelector(
-              ".hero-btn-ghost span, .hero-btn-ghost i + span"
-            );
-
-            if (viewPortfolioBtn && translations[lang]) {
-              viewPortfolioBtn.textContent = translations[lang].view_projects;
-            }
-            if (sendMessageBtn && translations[lang]) {
-              sendMessageBtn.textContent = translations[lang].get_in_touch;
-            }
+            const viewPortfolioBtns = document.querySelectorAll(".btn-text");
+            viewPortfolioBtns.forEach((btn) => {
+              if (
+                btn.textContent.includes("View Portfolio") ||
+                btn.textContent.includes("View All Projects")
+              ) {
+                btn.textContent = translations[lang].view_projects;
+              } else if (btn.textContent.includes("Send Message")) {
+                btn.textContent = translations[lang].get_in_touch;
+              }
+            });
 
             // Update tech stack label
             const techLabel = document.querySelector(".tech-label");
-            if (techLabel && translations[lang]) {
+            if (techLabel && translations[lang].tech_stack) {
               techLabel.textContent = translations[lang].tech_stack + ":";
             }
 
-            // Update section titles and subtitles
-            document.querySelectorAll(".section-title").forEach((title) => {
-              const span = title.querySelector("span");
-              if (span) {
-                const text = span.textContent.toLowerCase();
-                if (text.includes("me") && translations[lang].about_title) {
-                  title.innerHTML = translations[lang].about_title.replace(
-                    "<span>",
-                    "<span>"
-                  );
-                } else if (
-                  text.includes("services") &&
-                  translations[lang].services_title
-                ) {
-                  title.innerHTML = translations[lang].services_title.replace(
-                    "<span>",
-                    "<span>"
-                  );
-                } else if (
-                  text.includes("journey") &&
-                  translations[lang].experience_title
-                ) {
-                  title.innerHTML = translations[lang].experience_title.replace(
-                    "<span>",
-                    "<span>"
-                  );
-                } else if (
-                  text.includes("featured") &&
-                  translations[lang].featured_projects
-                ) {
-                  title.innerHTML =
-                    "<span>" + translations[lang].featured_projects + "</span>";
+            // Update section titles
+            const sectionTitles = {
+              "#about h2": "about_title",
+              "#services h2": "services_title",
+              "#experience h2": "experience_title",
+              "#projects h2": "featured_projects",
+              "#certifications h2": "certifications_title",
+              "#testimonials h2": "testimonials_title",
+              "#process h2": "process_title",
+              "#contact h2": "contact_title",
+            };
+
+            Object.keys(sectionTitles).forEach((selector) => {
+              const element = document.querySelector(selector);
+              if (element && translations[lang][sectionTitles[selector]]) {
+                if (selector === "#projects h2") {
+                  element.innerHTML = `<span>${
+                    translations[lang][sectionTitles[selector]]
+                  }</span>`;
+                } else {
+                  element.innerHTML =
+                    translations[lang][sectionTitles[selector]];
                 }
               }
             });
 
+            // Update section subtitles
             document
               .querySelectorAll(".section-subtitle")
-              .forEach((subtitle) => {
-                const text = subtitle.textContent;
-                if (
-                  text.includes("Professional Web Developer") &&
-                  translations[lang].about_subtitle
-                ) {
-                  subtitle.textContent = translations[lang].about_subtitle;
-                } else if (
-                  text.includes("Comprehensive web development") &&
-                  translations[lang].services_subtitle
-                ) {
-                  subtitle.textContent = translations[lang].services_subtitle;
-                } else if (
-                  text.includes("Education and professional") &&
-                  translations[lang].experience_subtitle
-                ) {
-                  subtitle.textContent = translations[lang].experience_subtitle;
-                } else if (
-                  text.includes("Let's work together") &&
-                  translations[lang].contact_subtitle
-                ) {
-                  subtitle.textContent = translations[lang].contact_subtitle;
+              .forEach((subtitle, index) => {
+                if (translations[lang]) {
+                  if (index === 0)
+                    subtitle.textContent = translations[lang].about_subtitle;
+                  else if (index === 1)
+                    subtitle.textContent = translations[lang].services_subtitle;
+                  else if (index === 2)
+                    subtitle.textContent =
+                      translations[lang].experience_subtitle;
+                  else if (index === 5)
+                    subtitle.textContent =
+                      translations[lang].certifications_subtitle;
+                  else if (index === 6)
+                    subtitle.textContent =
+                      translations[lang].testimonials_subtitle;
+                  else if (index === 7)
+                    subtitle.textContent = translations[lang].process_subtitle;
+                  else if (index === 8)
+                    subtitle.textContent = translations[lang].contact_subtitle;
                 }
               });
+
+            // Update tech section title
+            const techSectionTitle = document.querySelector(
+              ".tech-section-title span"
+            );
+            if (techSectionTitle && translations[lang].technologies_title) {
+              techSectionTitle.textContent =
+                translations[lang].technologies_title;
+            }
+
+            // Update process step titles
+            const stepTitles = document.querySelectorAll(".step-title");
+            if (stepTitles.length >= 3 && translations[lang]) {
+              stepTitles[0].textContent = translations[lang].discovery_planning;
+              stepTitles[1].textContent = translations[lang].design_development;
+              stepTitles[2].textContent = translations[lang].testing_deployment;
+            }
+
+            // Update about text
+            const aboutTexts = document.querySelectorAll(".about-text p");
+            if (aboutTexts.length >= 3 && translations[lang]) {
+              aboutTexts[0].textContent = translations[lang].about_text1;
+              aboutTexts[1].textContent = translations[lang].about_text2;
+              aboutTexts[2].textContent = translations[lang].about_text3;
+            }
+
+            // Update service titles and descriptions
+            const serviceCards = document.querySelectorAll(".service-card");
+            if (serviceCards.length >= 3 && translations[lang]) {
+              serviceCards[0].querySelector(".service-title").textContent =
+                translations[lang].frontend_development;
+              serviceCards[0].querySelector(
+                ".service-description"
+              ).textContent = translations[lang].frontend_description;
+              serviceCards[1].querySelector(".service-title").textContent =
+                translations[lang].backend_development;
+              serviceCards[1].querySelector(
+                ".service-description"
+              ).textContent = translations[lang].backend_description;
+              serviceCards[2].querySelector(".service-title").textContent =
+                translations[lang].react_development;
+              serviceCards[2].querySelector(
+                ".service-description"
+              ).textContent = translations[lang].react_description;
+            }
+
+            // Update client positions
+            const clientPositions =
+              document.querySelectorAll(".client-position");
+            if (clientPositions.length >= 2 && translations[lang]) {
+              clientPositions[0].textContent =
+                translations[lang].ceo_ruknalamasy;
+              clientPositions[1].textContent =
+                translations[lang].clinic_director;
+            }
 
             // Update contact section titles
             document
@@ -4793,6 +3821,36 @@
                     title.textContent = translations[lang].availability;
                 }
               });
+
+            document
+              .querySelectorAll(".contact-detail")
+              .forEach((detail, index) => {
+                if (translations[lang] && index === 2) {
+                  detail.textContent = translations[lang].location_detail;
+                } else if (translations[lang] && index === 3) {
+                  detail.textContent = translations[lang].availability_detail;
+                }
+              });
+
+            // Update footer
+            const footerDescription = document.querySelector(
+              ".footer-description"
+            );
+            if (footerDescription && translations[lang].footer_description) {
+              footerDescription.textContent =
+                translations[lang].footer_description;
+            }
+
+            const quickLinks = document.querySelectorAll(".footer-section h3");
+            if (quickLinks.length >= 1 && translations[lang].quick_links) {
+              quickLinks[0].textContent = translations[lang].quick_links;
+            }
+
+            const footerBottom = document.querySelectorAll(".footer-bottom p");
+            if (footerBottom.length >= 2 && translations[lang]) {
+              footerBottom[1].textContent =
+                translations[lang].crafting_excellence;
+            }
 
             // Update language toggle icon
             languageToggle.innerHTML =
@@ -4812,9 +3870,6 @@
             const newLang = currentLanguage === "en" ? "ar" : "en";
             updateLanguage(newLang);
           });
-
-          // Initialize language
-          updateLanguage(currentLanguage);
 
           // Navigation
           const navLinks = document.querySelectorAll(".nav-link");
@@ -4869,11 +3924,6 @@
             } else {
               backToTop.classList.remove("active");
             }
-
-            // Animate skill bars when in viewport
-            animateSkills();
-            // Animate stats counter when in viewport
-            animateStats();
           });
 
           backToTop.addEventListener("click", () => {
@@ -4882,55 +3932,6 @@
               behavior: "smooth",
             });
           });
-
-          // Animate Skill Bars
-          function animateSkills() {
-            const skillProgressBars =
-              document.querySelectorAll(".skill-progress");
-
-            skillProgressBars.forEach((bar) => {
-              const rect = bar.getBoundingClientRect();
-              if (rect.top < window.innerHeight - 100) {
-                const width = bar.getAttribute("data-width");
-                bar.style.width = width + "%";
-              }
-            });
-          }
-
-          // Animate Stats Counter
-          function animateStats() {
-            const statNumbers = document.querySelectorAll(".stat-number");
-
-            statNumbers.forEach((stat) => {
-              const rect = stat.getBoundingClientRect();
-              if (
-                rect.top < window.innerHeight - 100 &&
-                !stat.classList.contains("animated")
-              ) {
-                stat.classList.add("animated");
-                const target = parseInt(stat.getAttribute("data-count"));
-                const suffix = stat.textContent.includes("%") ? "%" : "";
-                let current = 0;
-                const increment = target / 50;
-
-                const timer = setInterval(() => {
-                  current += increment;
-                  if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                  }
-                  stat.textContent =
-                    suffix === "%"
-                      ? Math.floor(current) + suffix
-                      : Math.floor(current);
-                }, 30);
-              }
-            });
-          }
-
-          // Initialize animations
-          animateSkills();
-          animateStats();
 
           // Project Slider Functionality
           const projectSlider = document.getElementById("projectSlider");
@@ -4997,35 +3998,6 @@
                 alert("This feature will be available soon!");
               }
             });
-
-          // Name animation
-          const nameElement = document.querySelector(".hero-title .name");
-          if (nameElement) {
-            const variants = {
-              en: [
-                "Ahmad Salloum",
-                "Web Developer",
-                "Front-end Craftsman",
-                "UI/UX Expert",
-              ],
-              ar: [
-                "أحمد سلوم",
-                "مطور ويب",
-                "حرفي واجهات أمامية",
-                "خبير واجهات وتجربة مستخدم",
-              ],
-            };
-
-            let i = 0;
-            setInterval(() => {
-              i = (i + 1) % variants[currentLanguage].length;
-              nameElement.style.opacity = 0;
-              setTimeout(() => {
-                nameElement.textContent = variants[currentLanguage][i];
-                nameElement.style.opacity = 1;
-              }, 300);
-            }, 4000);
-          }
 
           // Code cursor animation
           const codeCursor = document.querySelector(".code-cursor");
