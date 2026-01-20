@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
@@ -260,7 +260,8 @@
         padding: 60px 24px;
         position: relative;
         overflow: hidden;
-        background: radial-gradient(
+        background:
+          radial-gradient(
             1200px 600px at 10% 10%,
             rgba(31, 182, 255, 0.05),
             transparent
@@ -330,7 +331,8 @@
           var(--hero-accent),
           var(--hero-accent-2)
         );
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6),
+        box-shadow:
+          0 6px 18px rgba(0, 0, 0, 0.6),
           0 0 18px rgba(31, 182, 255, 0.06) inset;
         animation: pulse 2s infinite;
       }
@@ -443,14 +445,16 @@
       .hero-btn-primary {
         background: linear-gradient(90deg, var(--hero-accent), #ff9860);
         color: #ffffff;
-        box-shadow: 0 12px 36px rgba(210, 122, 53, 0.25),
+        box-shadow:
+          0 12px 36px rgba(210, 122, 53, 0.25),
           0 4px 12px rgba(0, 0, 0, 0.3);
         border: none;
       }
 
       .hero-btn-primary:hover {
         transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(210, 122, 53, 0.35),
+        box-shadow:
+          0 16px 40px rgba(210, 122, 53, 0.35),
           0 6px 16px rgba(0, 0, 0, 0.4);
       }
 
@@ -596,7 +600,9 @@
         border-radius: 22px;
         border: 1px solid rgba(var(--hero-accent), 0.1);
         padding: 28px;
-        box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        box-shadow:
+          var(--shadow-xl),
+          inset 0 1px 0 rgba(255, 255, 255, 0.03),
           0 0 0 1px rgba(255, 255, 255, 0.02);
         transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
         transition: all 0.5s cubic-bezier(0.2, 0.9, 0.2, 1);
@@ -622,7 +628,8 @@
       .hero-mockup:hover {
         transform: perspective(1200px) rotateY(-1deg) rotateX(0deg)
           translateY(-12px);
-        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15),
+        box-shadow:
+          0 40px 80px rgba(0, 0, 0, 0.15),
           inset 0 1px 0 rgba(255, 255, 255, 0.05),
           0 0 0 1px rgba(255, 255, 255, 0.03);
       }
@@ -787,7 +794,8 @@
           rgba(0, 0, 0, 0.1),
           rgba(255, 255, 255, 0.02)
         );
-        font-family: ui-monospace, "Cairo Mono", SFMono-Regular, Menlo, Monaco,
+        font-family:
+          ui-monospace, "Cairo Mono", SFMono-Regular, Menlo, Monaco,
           "Roboto Mono", monospace;
         font-size: 13.5px;
         color: var(--hero-text);
@@ -914,7 +922,9 @@
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
       }
 
       .loader {
@@ -2555,7 +2565,10 @@
                     <img
                       src="images/Ahmad Salloum.jpeg"
                       alt="Ahmad Salloum"
-                      onerror="this.style.display='none'; this.parentNode.innerHTML='AS';"
+                      onerror="
+                        this.style.display = 'none';
+                        this.parentNode.innerHTML = 'AS';
+                      "
                     />
                   </div>
                   <div>
@@ -2942,7 +2955,7 @@
           <div class="project-card-slider" id="projectSlider">
             <!-- Project 1 -->
             <article class="featured-project-card" style="--card-index: 0">
-              <span class="project-status">In Development</span>
+              <span class="project-status">Completed</span>
               <time class="project-date">
                 <strong>E-commerce</strong>
               </time>
@@ -2950,7 +2963,7 @@
               <h3 class="featured-project-title">Rukn Alamasy</h3>
 
               <div class="project-image-container">
-                <img src="images/pro2.jpg" alt="E-commerce Store Project" />
+                <img src="images/pro2.png" alt="E-commerce Store Project" />
               </div>
 
               <div class="featured-project-description">
@@ -3869,7 +3882,7 @@
             {
               threshold: 0.1,
               rootMargin: "50px",
-            }
+            },
           );
 
           // Observe all sections
@@ -3881,7 +3894,7 @@
         animateElements(section) {
           // Get all animateable elements in the section
           const elements = section.querySelectorAll(
-            "[data-aos], .skill-item, .tech-icon-item, .service-card, .timeline-item, .featured-project-card, .certification-card, .testimonial-card, .process-step, .contact-card"
+            "[data-aos], .skill-item, .tech-icon-item, .service-card, .timeline-item, .featured-project-card, .certification-card, .testimonial-card, .process-step, .contact-card",
           );
 
           elements.forEach((element, index) => {
@@ -3966,7 +3979,7 @@
       class ThreeDEffects {
         constructor() {
           this.cards = document.querySelectorAll(
-            ".hero-mockup, .featured-project-card, .service-card"
+            ".hero-mockup, .featured-project-card, .service-card",
           );
           this.init();
         }
@@ -4148,7 +4161,7 @@
           // Theme Toggle - DEFAULT IS DARK MODE
           const themeToggle = document.getElementById("themeToggle");
           const prefersDarkScheme = window.matchMedia(
-            "(prefers-color-scheme: dark)"
+            "(prefers-color-scheme: dark)",
           );
 
           // Set default theme to DARK (as requested)
@@ -4290,7 +4303,7 @@
 
             // Update tech section title
             const techSectionTitle = document.querySelector(
-              ".tech-section-title span"
+              ".tech-section-title span",
             );
             if (techSectionTitle && translations[lang].technologies_title) {
               techSectionTitle.textContent =
@@ -4319,17 +4332,17 @@
               serviceCards[0].querySelector(".service-title").textContent =
                 translations[lang].frontend_development;
               serviceCards[0].querySelector(
-                ".service-description"
+                ".service-description",
               ).textContent = translations[lang].frontend_description;
               serviceCards[1].querySelector(".service-title").textContent =
                 translations[lang].backend_development;
               serviceCards[1].querySelector(
-                ".service-description"
+                ".service-description",
               ).textContent = translations[lang].backend_description;
               serviceCards[2].querySelector(".service-title").textContent =
                 translations[lang].react_development;
               serviceCards[2].querySelector(
-                ".service-description"
+                ".service-description",
               ).textContent = translations[lang].react_description;
             }
 
@@ -4370,7 +4383,7 @@
 
             // Update footer
             const footerDescription = document.querySelector(
-              ".footer-description"
+              ".footer-description",
             );
             if (footerDescription && translations[lang].footer_description) {
               footerDescription.textContent =
@@ -4561,8 +4574,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
